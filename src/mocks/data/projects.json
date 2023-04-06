@@ -1,0 +1,24 @@
+{
+    "projects": [
+        {
+            "title": "vStock",
+            "description": "Simple stock viewing Django web app geared towards fundamental company data",
+            "descriptionLong": "Long description to come...",
+            "imgHeader": "https://www.filipniklas.com/static/vStockHeader.webp",
+            "languages": [
+                "javascript",
+                "python"
+            ],
+            "tools": [
+                "django",
+                "chartjs",
+                "matplotlib",
+                "bootstrap"
+            ],
+            "links": {
+                "src": "https://github.com/Firgrep/vstock",
+                "live": "https://vstock.herokuapp.com/"
+            }
+        }
+    ]
+}
