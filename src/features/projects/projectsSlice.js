@@ -1,16 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getProjects } from "../../api/datafinder";
 
-
-export const loadRecipes = createAsyncThunk(
-    "allRecipes/getAllRecipes",
-    async () => {
-      const data = await fetch("api/recipes?limit=10");
-      const json = await data.json();
-      return json;
-    }
-  );
-
 export const loadProjects = createAsyncThunk(
     "projects/fetchProjects",
     async () => {

@@ -1,5 +1,6 @@
 import React from 'react';
 import Hero from '../../components/hero';
+import { Projects } from '../../features/projects/Projects';
 
 const Home = () => {
 
@@ -7,6 +8,7 @@ const Home = () => {
         <main className="page">
             <Hero />
             <p>Test test test</p>
+            <Projects />
         </main>
     );
 };

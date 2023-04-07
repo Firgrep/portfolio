@@ -1,7 +1,7 @@
 import React from 'react';
 import Hero from '../../components/hero';
 
-const Projects = () => {
+const ProjectsPage = () => {
 
     return (
         <main className="page">
@@ -14,4 +14,4 @@ const Projects = () => {
     );
 };
 
-export default Projects;
+export default ProjectsPage;
