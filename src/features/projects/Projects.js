@@ -25,10 +25,9 @@ export const Projects = () => {
         )
     }
 
-    console.log(projects);
     return (
         <section>
-            <div className="grid">
+            <div className="projects-container">
                 {Object.values(projects).map((project) => (
                     
                     <article key={project.id} className="project-container">
@@ -41,29 +40,31 @@ export const Projects = () => {
                                 alt=""
                             />
                         </div>
-                        <h3>{project.title}</h3>
-                        <p>{project.description}</p>
-                        <p>Languages: {project.languages}</p>
-                        <p>Tools: {project.tools}</p>
-                        <Link 
-                            to={project.links.src}
-                            target="_blank"
-                        >
-                            Source Code
-                        </Link>
-                        <br></br>
-                        <Link 
-                            to={project.links.live}
-                            target="_blank"
-                        >
-                            Live Link
-                        </Link>
-                        
-
-
-
+                        <div className="project-content-container">
+                            <Link
+                                key={project.id}
+                                to={`/project/${project.id}`}
+                            >
+                                <h3>{project.title}</h3>
+                            </Link>
+                            <p>{project.description}</p>
+                            <p>Languages: {project.languages}</p>
+                            <p>Tools: {project.tools}</p>
+                            <Link 
+                                to={project.links.src}
+                                target="_blank"
+                            >
+                                Source Code
+                            </Link>
+                            <br></br>
+                            <Link 
+                                to={project.links.live}
+                                target="_blank"
+                            >
+                                Live Link
+                            </Link>
+                        </div>
                     </article>
-                    
                 ))}
             </div>
         </section>
