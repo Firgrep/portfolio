@@ -1,16 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Hero from '../../components/hero';
+import { useParams } from 'react-router-dom';
+import { Project } from '../../features/project/Project';
 
 const ProjectDetailsPage = () => {
-    // const [data, setData] = useState();
+    const [text, setText] = useState("Individual Project");
+    const [imageUrl, setImageUrl] = useState(null);
+    const { project } = useParams();
+    const projectId = Number(project);
 
     return (
         <main className="page">
-            <Hero
-                displayText="Projects"
-                type="projects"
+            <Hero 
+                displayText={text}
+                type="project"
+                image={imageUrl}
             />
-            <p>project here to come</p>
+            <Project
+                projectId={projectId}
+                setText={setText}
+                setImageUrl={setImageUrl}
+            />
         </main>
     );
 };

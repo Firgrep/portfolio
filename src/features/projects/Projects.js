@@ -25,9 +25,15 @@ export const Projects = () => {
         )
     }
 
+    if (projects.length === 0) {
+        return(
+            <h2>No projects found!</h2>
+        )
+    }
+
     return (
         <section>
-            <div className="projects-container">
+            <div className="container">
                 {Object.values(projects).map((project) => (
                     
                     <article key={project.id} className="project-container">

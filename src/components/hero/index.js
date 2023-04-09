@@ -1,14 +1,14 @@
 import React from "react";
 import './index.css';
 
-const Hero = ({ displayText, type }) => {
+const Hero = ({ image, displayText, type }) => {
   
     return (
         <div
             className="hero-container"
             style={{
                 backgroundImage: `linear-gradient(transparent, transparent), url("${
-                    getHeroImage(type)
+                    image || getHeroImage(type)
                 }")
                 `,
                 height: getHeroHeight(type),
@@ -29,6 +29,8 @@ const getHeroImage = (type) => {
     switch (type) {
         case 'projects':
             return 'projects.jpg'
+        case 'project':
+            return '../projects.jpg'
         default: 
             return 'hero.webp';
     }
@@ -37,6 +39,8 @@ const getHeroImage = (type) => {
 const getHeroHeight = (type) => {
     switch (type) {
         case 'projects':
+            return '400px'
+        case 'project':
             return '400px'
         default: 
             return '650px';

@@ -12,7 +12,7 @@ export const loadProjects = createAsyncThunk(
 export const projectsSlice = createSlice({
     name: 'projects',
     initialState: {
-        projects: {},
+        projects: [],
         isLoading: false,
         hasError: false
     },
@@ -34,6 +34,10 @@ export const projectsSlice = createSlice({
     }
 });
 
-export const selectProjects = (state) => state.projects.projects
+export const selectProjects = state => state.projects.projects;
+
+export const selectProjectById = (state, projectId) => {
+    return state.projects.projects.find(project => project.id === projectId);
+}
 
 export default projectsSlice.reducer;
