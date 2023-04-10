@@ -9,7 +9,7 @@ const Home = () => {
         <main className="page">
             <Hero />
             <p>Test test test</p>
-            <div style={{display: "flex", margin: "200px"}}>
+            <div style={{display: "flex", margin: "200px", flexWrap: "wrap"}}>
                 <Icon icon="Redux" />
                 <Icon icon="react" />
                 <Icon icon="javascript" />
@@ -19,6 +19,14 @@ const Home = () => {
                 <Icon icon="html" />
                 <Icon icon="css" />
                 <Icon icon="jsPdf" />
+                <Icon icon="bootstrap" />
+                <Icon icon="cplusplus" />
+                <Icon icon="pandas" />
+                <Icon icon="git" />
+                <Icon icon="numpy" />
+                <Icon icon="github" />
+                <Icon icon="linkedin" />
+                <Icon icon="chartjs" />
             </div>
             
             <Projects />

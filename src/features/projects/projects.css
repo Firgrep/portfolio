@@ -1,7 +1,8 @@
 .project-container {
-    background-color: lightgray;
+    background-color: white;
     border-radius: 25px;
     margin-bottom: 40px;
+    box-shadow: 5px 10px 18px #888888;
 }
 
 .project-content-container {
@@ -14,7 +15,7 @@
 }
 
 .project-image-container {
-    height: 200px;
+    height: auto;
     width: 200px;
     overflow: hidden;
 }
@@ -35,7 +36,7 @@
         margin-left: 15px;
     }
     .project-image-container {
-        height: 350px;
+        height: auto;
         width: 350px;
         border-top-right-radius: 25px;
         border-bottom-right-radius: 25px;
@@ -47,7 +48,7 @@
         padding: 30px 200px;
     }
     .project-image-container {
-        height: 400px;
+        height: auto;
         width: 500px;
         border-top-right-radius: 25px;
         border-bottom-right-radius: 25px;

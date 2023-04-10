@@ -7,7 +7,9 @@
         "imgHeader": "https://www.filipniklas.com/static/vStockHeader.webp",
         "languages": [
             "javascript",
-            "python"
+            "python",
+            "html",
+            "css"
         ],
         "tools": [
             "django",
@@ -28,7 +30,8 @@
         "imgHeader": "",
         "languages": [
             "Javascript",
-            "HTML/CSS"
+            "HTML",
+            "css"
         ],
         "tools": [
             "jsPDF"
@@ -36,6 +39,19 @@
         "links": {
             "src": "https://github.com/Firgrep/mycv",
             "live": "https://www.filipniklas.com/mycv"
+        }
+    },
+    {
+        "id": 51322479,
+        "title": "Other Projects",
+        "description": "For more code and projects, please visit GitHub",
+        "descriptionLong": "Long description placeholder",
+        "imgHeader": "",
+        "languages": [],
+        "tools": [],
+        "links": {
+            "src": "https://github.com/Firgrep/mycv",
+            "live": ""
         }
     }
 ]

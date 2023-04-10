@@ -1,0 +1,5 @@
+.icons-container {
+    display: inline-flex;
+    margin: 10px; 
+    flex-wrap: wrap;
+}

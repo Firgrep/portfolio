@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { loadProjects } from "./projectsSlice";
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { Icons } from "../icons/Icons";
 import './projects.css'
 
 export const Projects = () => {
@@ -52,21 +53,35 @@ export const Projects = () => {
                             <h3>{project.title}</h3>
                         </Link>
                         <p>{project.description}</p>
-                        <p>Languages: {project.languages}</p>
-                        <p>Tools: {project.tools}</p>
+
+                        {project.languages.length > 0 &&
+                        <div>
+                            <span>Languages:</span><Icons dataArray={project.languages} />
+                        </div>}
+
+                        {project.tools.length > 0 &&
+                        <div>
+                            <span>Tools:</span><Icons dataArray={project.tools} />
+                        </div>}
+
+                        {project.links.src &&
                         <Link 
                             to={project.links.src}
                             target="_blank"
                         >
                             Source Code
                         </Link>
+                        }
+
                         <br></br>
+
+                        {project.links.live &&
                         <Link 
                             to={project.links.live}
                             target="_blank"
                         >
                             Live Link
-                        </Link>
+                        </Link>}
                     </div>
                 </article>
             ))}
