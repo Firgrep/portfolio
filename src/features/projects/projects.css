@@ -4,17 +4,13 @@
     margin-bottom: 40px;
 }
 
-.projects-container { 
-    padding: 30px;
-}
-
 .project-content-container {
     flex-grow: 1;
     padding: 0 20px 35px 20px;
 }
 
 .project-content-container > p {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
 }
 
 .project-image-container {
@@ -43,9 +39,6 @@
         width: 350px;
         border-top-right-radius: 25px;
         border-bottom-right-radius: 25px;
-    }
-    .projects-container {
-        padding: 30px 50px;
     }
 }
 

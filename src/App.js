@@ -1,6 +1,6 @@
 import { 
   RouterProvider,
-  createBrowserRouter,
+  createHashRouter,
   createRoutesFromElements,
   Route 
 } from 'react-router-dom';
@@ -9,7 +9,7 @@ import Home from './pages/home';
 import ProjectsPage from './pages/projectsPage';
 import ProjectDetailsPage from './pages/projectDetailsPage';
 
-const appRouter = createBrowserRouter(createRoutesFromElements(
+const appRouter = createHashRouter(createRoutesFromElements(
   <Route path="/" element={ <Root /> }>
     <Route index element={ <Home /> }></Route>
     <Route path="/projects" element={ <ProjectsPage />}></Route>
