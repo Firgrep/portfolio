@@ -4,6 +4,8 @@ import { loadProjects } from "./projectsSlice";
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Icons } from "../icons/Icons";
+import { Button } from "@mui/material";
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import './projects.css'
 
 export const Projects = () => {
@@ -49,39 +51,67 @@ export const Projects = () => {
                         <Link
                             key={project.id}
                             to={`/project/${project.id}`}
+                            className="site-link"
                         >
-                            <h3>{project.title}</h3>
+                            <h2 style={{paddingTop: "10px"}}>{project.title}</h2>
                         </Link>
-                        <p>{project.description}</p>
+                        <div className="project-content-container-sub">
+                            <div>
+                                <p>{project.description}</p>
 
-                        {project.languages.length > 0 &&
-                        <div>
-                            <span>Languages:</span><Icons dataArray={project.languages} />
-                        </div>}
+                                {project.languages.length > 0 &&
+                                <div>
+                                    <span>Languages:</span><Icons dataArray={project.languages} />
+                                </div>}
 
-                        {project.tools.length > 0 &&
-                        <div>
-                            <span>Tools:</span><Icons dataArray={project.tools} />
-                        </div>}
+                                {project.tools.length > 0 &&
+                                <div>
+                                    <span>Tools:</span><Icons dataArray={project.tools} />
+                                </div>}
+                                
+                                <div className="project-links-container-outer">
+                                    <div className="project-links-container">
+                                        <Link
+                                            key={project.id}
+                                            to={`/project/${project.id}`}
+                                            className="site-link"
+                                        >
+                                            <Button variant="outlined">Learn More</Button>
+                                        </Link>
 
-                        {project.links.src &&
-                        <Link 
-                            to={project.links.src}
-                            target="_blank"
-                        >
-                            Source Code
-                        </Link>
-                        }
+                                        {project.links.src &&
+                                        <Link 
+                                            to={project.links.src}
+                                            target="_blank"
+                                            className="site-link"
+                                        >
+                                            <Button 
+                                                variant="contained"
+                                                endIcon={<OpenInNewIcon />}
+                                            >
+                                                Source Code
+                                            </Button>
+                                        </Link>
+                                        }
 
-                        <br></br>
-
-                        {project.links.live &&
-                        <Link 
-                            to={project.links.live}
-                            target="_blank"
-                        >
-                            Live Link
-                        </Link>}
+                                        {project.links.live &&
+                                        <Link 
+                                            to={project.links.live}
+                                            target="_blank"
+                                            className="site-link"
+                                        >
+                                            <Button 
+                                                variant="contained"
+                                                color="secondary"
+                                                endIcon={<OpenInNewIcon />}
+                                            >
+                                                Live
+                                            </Button>
+                                        </Link>}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </article>
             ))}

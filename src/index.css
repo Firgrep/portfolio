@@ -12,6 +12,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: azure;
 }
 
 code {
@@ -27,10 +28,15 @@ code {
   padding: 30px;
 }
 
-.page {
+/* .page {
   background-color: azure;
-}
+} */
 
 .text-container {
   text-align: center;
+}
+
+.site-link {
+  text-decoration: inherit;
+  color: inherit;
 }

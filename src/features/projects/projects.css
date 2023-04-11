@@ -6,12 +6,21 @@
 }
 
 .project-content-container {
+    display: flex;
+    flex-direction: column;
     flex-grow: 1;
     padding: 0 20px 35px 20px;
 }
 
-.project-content-container > p {
+.project-content-container-sub > * {
     font-size: 1.25rem;
+}
+
+.project-content-container-sub {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    justify-content: center;
 }
 
 .project-image-container {
@@ -24,6 +33,17 @@
     height: 100%;
     width: 100%;
     object-fit: cover;
+}
+
+.project-links-container-outer {
+    display: flex;
+    justify-content: center;
+}
+
+.project-links-container {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 @media only screen and (min-width: 750px) {
