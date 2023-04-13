@@ -1,0 +1,31 @@
+[data-bs-theme="blue"] {
+    $white: #ffffff;
+    $blue: #8ec6dc;
+    $blue-400: scale-color($blue, $lightness: -5%);
+    $blue-500: scale-color($blue, $lightness: -10%);
+    $blue-600: adjust-color($blue, $lightness: -25%, $saturation: -15%);
+    $blue-700: adjust-color($blue, $lightness: -35%, $saturation: -20%);
+    $gray: #808080;
+    $gray-600: adjust-color($gray, $lightness: -25%, $saturation: -15%);
+    --bs-body-color: var(--bs-white);
+    --bs-body-color-rgb: #{to-rgb($white)};
+    --bs-body-bg: var($blue);
+    --bs-body-bg-rgb: #{to-rgb($blue)};
+    --bs-tertiary-bg: #{$blue-600};
+  
+    .dropdown-menu {
+      --bs-dropdown-bg: #{mix($blue-500, $blue-600)};
+      --bs-dropdown-link-active-bg: #{$blue-700};
+    }
+  
+    .btn-secondary {
+      --bs-btn-bg: #{mix($gray-600, $blue-400, 50%)};
+      --bs-btn-border-color: #{rgba($white, 25%)};
+      --bs-btn-hover-bg: #{darken(mix($gray-600, $blue-400, 50%), 5%)};
+      --bs-btn-hover-border-color: #{rgba($white, 25%)};
+      --bs-btn-active-bg: #{darken(mix($gray-600, $blue-400, 50%), 10%)};
+      --bs-btn-active-border-color: #{rgba($white, 50%)};
+      --bs-btn-focus-border-color: #{rgba($white, 50%)};
+      --bs-btn-focus-box-shadow: 0 0 0 .25rem rgba(255, 255, 255, .2);
+    }
+}

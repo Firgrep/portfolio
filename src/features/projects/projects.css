@@ -24,9 +24,11 @@
 }
 
 .project-image-container {
-    height: auto;
-    width: 200px;
+    height: 200px;
+    width: auto;
     overflow: hidden;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
 }
 
 .project-image {
@@ -58,6 +60,7 @@
     .project-image-container {
         height: auto;
         width: 350px;
+        border-top-left-radius: 0;
         border-top-right-radius: 25px;
         border-bottom-right-radius: 25px;
     }
@@ -70,6 +73,7 @@
     .project-image-container {
         height: auto;
         width: 500px;
+        border-top-left-radius: 0;
         border-top-right-radius: 25px;
         border-bottom-right-radius: 25px;
     }

@@ -1,17 +1,74 @@
+.avatar-container {
+    width: 200px;
+    right: 20%;
+    bottom: 70px;
+}
+
+.avatar-container > img {
+    border-radius: 20px;
+}
+
+.card {
+    position: absolute;
+    bottom: -30px;
+}
+
+.card-body {
+    font-size: 1.5rem;
+}
+
+.greetings {
+    bottom: 350px;
+    left: 50%;
+}
+
+.greetings > h1 {
+    color: white;
+    font-weight: bold;
+}
+
 .hero-container {
     width: 100%;
-    height: 650px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     color: white;
     font-size: 2em;
+    position: relative;
 }
   
-.hero-container,
-h2 {
+.hero-container > h2 {
     font-size: 40px;
     font-weight: bold;
+}
+
+@media only screen and (min-width: 1000px) {
+    .card {
+        left: 30%;
+    }
+    
+}
+
+@media only screen and (min-width: 750px) {
+    .card {
+        width: 700px;
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    .avatar-container {
+        bottom: 100px
+    }
+    .greetings {
+        bottom: 400px;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .avatar-container {
+        bottom: 247px
+    }
+    .greetings {
+        bottom: 500px;
+        left: 20%;
+    }
 }
 
 .test {

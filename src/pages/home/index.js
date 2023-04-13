@@ -8,7 +8,7 @@ const Home = () => {
     return (
         <main className="page">
             <Hero />
-            <p>Test test test</p>
+            
             <div style={{display: "flex", margin: "200px", flexWrap: "wrap"}}>
                 <Icon icon="Redux" />
                 <Icon icon="react" />
@@ -27,6 +27,7 @@ const Home = () => {
                 <Icon icon="github" />
                 <Icon icon="linkedin" />
                 <Icon icon="chartjs" />
+                <Icon icon="materialui" />
             </div>
             
             <Projects />

@@ -1,0 +1,10 @@
+.navbar {
+    background: rgb(214,245,255);
+    background: linear-gradient(146deg, rgba(214,245,255,1) 0%, rgba(142,198,220,1) 100%);
+}
+
+.nav-text,
+.nav-link {
+    font-size: 1.25rem;
+}
+  
