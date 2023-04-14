@@ -1,8 +1,9 @@
 import React from "react";
+import { HashLink } from 'react-router-hash-link';
 import './index.css';
 
 const Hero = ({ image, displayText, type }) => {
-  
+    
     return (
         <div
             className="hero-container"
@@ -34,7 +35,7 @@ const Hero = ({ image, displayText, type }) => {
                     </div>
                     <div className="card" style={{position: `${displayText ? "" : "absolute"}`}}>
                         <div className="card-body">
-                        I sit at the intersection of web development and data analysis to extract insights and present them in a beautiful and easy-to-understand way that helps your business grow. Get in touch!
+                        I sit at the intersection of web development and data analysis to extract insights and present them in a beautiful and easy-to-understand way that helps your business grow. <HashLink smooth to="/#contact">Get in touch!</HashLink>
                         </div>
                     </div>
                 </>

@@ -6,7 +6,7 @@ import './icons.css';
 export const Icons = ({dataArray}) => {
 
     return(
-        <section className="icons-container">
+        <section className="icons-container" >
             {dataArray.map(data => 
                 <Icon key={uuidv4()} icon={data} />
             )}

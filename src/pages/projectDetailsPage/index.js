@@ -10,18 +10,20 @@ const ProjectDetailsPage = () => {
     const projectId = Number(project);
 
     return (
-        <main className="page">
+        <>
             <Hero 
                 displayText={text}
                 type="project"
                 image={imageUrl}
             />
-            <Project
-                projectId={projectId}
-                setText={setText}
-                setImageUrl={setImageUrl}
-            />
-        </main>
+            <main className="container">
+                <Project
+                    projectId={projectId}
+                    setText={setText}
+                    setImageUrl={setImageUrl}
+                />
+            </main>
+        </>
     );
 };
 

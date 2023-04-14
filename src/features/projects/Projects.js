@@ -35,7 +35,7 @@ export const Projects = () => {
     }
 
     return (
-        <section className="container">
+        <section>
             {Object.values(projects).map((project) => (
                 <article key={project.id} className="project-container">
                     <div className="project-image-container">

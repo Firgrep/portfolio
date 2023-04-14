@@ -5,16 +5,18 @@ import { Projects } from '../../features/projects/Projects';
 const ProjectsPage = () => {
 
     return (
-        <main className="page">
+        <>
             <Hero
                 displayText="Projects"
                 type="projects"
             />
-            <div className="text-container">
-                <h3>Here you can find projects I've worked on</h3>
-            </div>
-            <Projects />
-        </main>
+            <main className="container">
+                <div className="text-container">
+                    <h3>Here you can find projects I've worked on</h3>
+                </div>
+                <Projects />
+            </main>
+        </>
     );
 };
 
