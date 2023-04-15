@@ -2,7 +2,6 @@ import React, {useState, useEffect } from 'react';
 import Hero from '../../components/hero';
 import ContactForm from '../../components/contactForm';
 import { Projects } from '../../features/projects/Projects';
-// import { Icon } from '../../features/icon/Icon';
 import { Icons } from '../../features/icons/Icons';
 
 const Home = () => {

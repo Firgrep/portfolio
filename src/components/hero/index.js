@@ -10,8 +10,7 @@ const Hero = ({ image, displayText, type }) => {
             style={{
                 backgroundImage: `linear-gradient(transparent, transparent), url("${
                     image || getHeroImage(type)
-                }")
-                `,
+                }") `,
                 height: getHeroHeight(type),
                 backgroundBlendMode: 'saturation',
                 backgroundSize: 'cover',
@@ -22,7 +21,11 @@ const Hero = ({ image, displayText, type }) => {
             //      linear-gradient(black, black)
             }}
             >
-            {displayText && <h2>{displayText}</h2>}
+            {   
+                displayText 
+                &&
+                <h2 style={{backgroundColor: "rgba(0,0,0,0.4)", padding: "10px"}}>{displayText}</h2>
+            }
             {
                 !displayText 
                 &&
