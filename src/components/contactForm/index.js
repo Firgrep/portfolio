@@ -4,6 +4,7 @@ import { Button } from "@mui/material";
 import emailjs from '@emailjs/browser';
 import { SERVICE_ID, TEMPLATE_ID, PUBLIC_KEY } from './emailCred/emailCred';
 import './index.css';
+import '../../util/util.css';
 
 const ContactForm = () => {
     const form = useRef();
