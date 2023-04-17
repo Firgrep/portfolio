@@ -7,7 +7,7 @@ import reportWebVitals from './reportWebVitals';
 
 // Bootstrap Library
 import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle.min";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 // Robot Font for Material UI Components
 import '@fontsource/roboto/300.css';

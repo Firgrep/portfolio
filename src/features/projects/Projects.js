@@ -28,7 +28,13 @@ export const Projects = () => {
         )
     }
 
-    if (projects.length === 0) {
+    if (projects.projects === undefined) {
+            return(
+                <h2>No projects found. Data is <i>undefined</i>, error likely at API. Check console log for more info.</h2>
+            )
+        }
+
+    if (projects.projects.length === 0) {
         return(
             <h2>No projects found!</h2>
         )
@@ -36,7 +42,8 @@ export const Projects = () => {
 
     return (
         <section>
-            {Object.values(projects).map((project) => (
+            {projects.projects.length > 0 &&
+            projects.projects.map((project) => (
                 <article key={project.id} className="project-container">
                     <div className="project-image-container">
                         <img
@@ -59,12 +66,12 @@ export const Projects = () => {
                             <div>
                                 <p>{project.description}</p>
 
-                                {project.languages.length > 0 &&
+                                {project.languages &&
                                 <div>
                                     <span>Languages:</span><Icons dataArray={project.languages} />
                                 </div>}
 
-                                {project.tools.length > 0 &&
+                                {project.tools &&
                                 <div>
                                     <span>Tools:</span><Icons dataArray={project.tools} />
                                 </div>}

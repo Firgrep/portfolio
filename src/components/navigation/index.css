@@ -7,4 +7,16 @@
 .nav-link {
     font-size: 1.25rem;
 }
-  
+
+.navbar-nav {
+    gap: 15px;
+}
+
+.navbar-hidden {
+    transform: translateY(-70px);
+    transition: transform 0.3s ease-in-out;
+}
+
+li {
+    font-size: 1.25rem;
+}

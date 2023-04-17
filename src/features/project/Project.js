@@ -5,6 +5,8 @@ import { Icons } from "../icons/Icons";
 import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
+import { marked } from 'marked';
+import DOMPurify from 'dompurify';
 import '../projects/projects.css';
 
 export const Project = ({projectId, setText, setImageUrl}) => {
@@ -12,6 +14,7 @@ export const Project = ({projectId, setText, setImageUrl}) => {
     const projects = useSelector(selectProjects);
     const project = useSelector(state => selectProjectById(state, projectId));
     const [languagesTools, setLanguagesTools] = useState([]);
+    const [readmeData, setReadmeData] = useState("");
 
     useEffect(() => {
         dispatch(loadProjects());
@@ -34,6 +37,23 @@ export const Project = ({projectId, setText, setImageUrl}) => {
         setImageUrl,
         project?.imgHeader
     ]);
+
+    useEffect(() => {
+        const fetchReadmeData = async () => {
+            if (project?.links.readme) {
+                try {
+                const response = await fetch(project.links.readme);
+                const text = await response.text();
+                const html = marked(text);
+                const sanitizedHtml = DOMPurify.sanitize(html);
+                setReadmeData(sanitizedHtml);
+                } catch(error) {
+                    console.error(error);
+                }
+            }
+        }
+        fetchReadmeData();
+    }, [project?.links.readme])
 
     if (projects.isLoading === true) {
         return(
@@ -60,16 +80,28 @@ export const Project = ({projectId, setText, setImageUrl}) => {
     }
 
     return (
-        <section style={{display: "flex", justifyContent: "center"}}>
+        <section style={{
+            display: "flex", 
+            justifyContent: "center",
+            marginBottom: "50px"
+        }}>
             {projects.length > 0 && (
                 <div>
-                    <h1 style={{display: "flex"}}>{project.title}</h1>
-                    <p>{project.description}</p>
-                    {languagesTools.length > 0 &&
-                        <div>
+                    <h1 style={{textAlign: "center"}}>{project.title}</h1>
+                    <div>
+                        <p style={{textAlign: "center"}}>{project.description}</p>
+                        {languagesTools.length > 0 &&
+                        <div className="center-content" style={{marginTop: "50px"}}>
                             <Icons dataArray={languagesTools} />
-                        </div>}
-                    <p>{project.descriptionLong}</p>
+                        </div>
+                        }
+                    </div>
+                    <div className="center-content" style={{margin: "50px 0"}}>
+                        <div style={{maxWidth: "500px"}}>
+                            <p style={{textAlign: "justify"}}>{project.descriptionLong}</p>
+                        </div>
+                    </div>
+                    
                     <div className="project-links-container-outer">
                         <div className="project-links-container">
                             {project.links.src &&
@@ -102,8 +134,23 @@ export const Project = ({projectId, setText, setImageUrl}) => {
                                 </Button>
                             </Link>}
                         </div>
+
                     </div>
-                </div>
+                        { readmeData &&
+                        <div style={{marginTop: "100px"}}>
+                            <h1 style={{textAlign: "center"}}>Project Readme</h1>
+                            <div 
+                                dangerouslySetInnerHTML={{__html: readmeData}}
+                                style={{
+                                    backgroundColor: "white", 
+                                    padding: "15px", 
+                                    borderRadius: "25px",
+                                    boxShadow: "5px 10px 18px #888888"
+                                }}
+                            ></div>
+                        </div>
+                        }
+                    </div>
             )}
         </section>
     );

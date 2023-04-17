@@ -1,11 +1,5 @@
-/* @media only screen and (max-width: 600px) {
-  .grid {
-    grid-template-columns: repeat(auto-fill) !important;
-    grid-gap: 20px 4px !important;
-  }
-} */
-
 body {
+  padding-top: 50px;
   margin: 0;
   font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -28,10 +22,6 @@ code {
   padding: 30px;
 }
 
-/* .page {
-  background-color: azure;
-} */
-
 .text-container {
   text-align: center;
 }
@@ -39,4 +29,22 @@ code {
 .site-link {
   text-decoration: inherit;
   color: inherit;
+}
+
+@media only screen and (max-width: 1000px) {
+  body {
+      padding-top: 25px;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  body {
+      padding-top: 0px;
+  }
+}
+
+/* UTILITY CLASSES */
+.center-content {
+  display: flex;
+  justify-content: center;
 }

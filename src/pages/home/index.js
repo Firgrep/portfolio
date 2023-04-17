@@ -29,41 +29,41 @@ const Home = () => {
         <>
             <Hero />
             <main className="container">
-            <section>
-                <div style={{
-                    marginBottom: "100px", 
-                    padding: `${largerScreen ? "0 200px" : "0"}`
-                }}>
-                    <div style={{marginBottom: "60px"}}>
-                        <h1>Languages I Speak</h1>
-                    <div style={{display: "flex"}}>
-                        <Icons dataArray={languages}></Icons>
-                        {largeScreen &&
-                        <div style={{
-                            display: "flex", 
-                            flexGrow: "1", 
-                            justifyContent: "center"}}
-                        >
-                            <img src="gifOne.webp" height="248" width="248" alt=""/>
-                        </div>}
+                <section>
+                    <div style={{
+                        marginBottom: "100px", 
+                        padding: `${largerScreen ? "0 200px" : "0"}`
+                    }}>
+                        <div style={{marginBottom: "60px"}}>
+                            <h1>Languages I Speak</h1>
+                        <div style={{display: "flex"}}>
+                            <Icons dataArray={languages}></Icons>
+                            {largeScreen &&
+                            <div style={{
+                                display: "flex", 
+                                flexGrow: "1", 
+                                justifyContent: "center"}}
+                            >
+                                <img src="gifOne.webp" height="248" width="248" alt=""/>
+                            </div>}
+                        </div>
+                        </div>
+                        <h1 style={{textAlign: "right"}}>Technologies I Use</h1>
+                        <div style={{display: "flex", justifyContent: "flex-end"}}>
+                            {largeScreen &&
+                            <div style={{
+                                display: "flex", 
+                                flexGrow: "1", 
+                                justifyContent: "center"}}
+                            >
+                                <img src="toolbox.svg" height="200" width="200" style={{opacity: "0.3"}} alt=""/>
+                            </div>}
+                            <Icons dataArray={tools}></Icons>
+                        </div>
                     </div>
-                    </div>
-                    <h1 style={{textAlign: "right"}}>Technologies I Use</h1>
-                    <div style={{display: "flex", justifyContent: "flex-end"}}>
-                        {largeScreen &&
-                        <div style={{
-                            display: "flex", 
-                            flexGrow: "1", 
-                            justifyContent: "center"}}
-                        >
-                            <img src="toolbox.svg" height="200" width="200" style={{opacity: "0.3"}} alt=""/>
-                        </div>}
-                        <Icons dataArray={tools}></Icons>
-                    </div>
-                </div>
-            </section>
-            <Projects />
-            <ContactForm />
+                </section>
+                <Projects />
+                <ContactForm />
             </main>
         </>
     );

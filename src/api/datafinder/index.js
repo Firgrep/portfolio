@@ -1,3 +1,5 @@
+
+
 export const getProjects = async () => {
     const requestUrl = `/dataprojects`;
     const response = await fetch(requestUrl, {

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './index.css';
 import '../../util/util.css';
 
@@ -68,7 +69,14 @@ const Footer = () => {
                             <p>2023 | Filip Niklas</p>
                         </div>
                         <div className="col-xl-4 col-lg-4 col-md-4">
-                            <p id="privacy-notice">Privacy Policy</p>
+                            <p id="privacy-notice">
+                                <Link
+                                    to="/privacy-policy"
+                                    className="site-link"
+                                >
+                                    Privacy Policy
+                                </Link>
+                            </p>
                         </div>
                     </div>    
                 </div>

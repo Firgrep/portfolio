@@ -1,10 +1,12 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getProjects } from "../../api/datafinder";
+import { getFirebaseProjects } from "../../api/firebase";
 
 export const loadProjects = createAsyncThunk(
     "projects/fetchProjects",
     async () => {
-        const data = await getProjects();
+        // const data = await getProjects();
+        const data = await getFirebaseProjects();
         return data
     }
 );
@@ -34,7 +36,7 @@ export const projectsSlice = createSlice({
     }
 });
 
-export const selectProjects = state => state.projects.projects;
+export const selectProjects = state => state.projects;
 
 export const selectProjectById = (state, projectId) => {
     return state.projects.projects.find(project => project.id === projectId);
