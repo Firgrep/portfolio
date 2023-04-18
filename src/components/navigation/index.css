@@ -1,6 +1,7 @@
 .navbar {
     background: rgb(214,245,255);
     background: linear-gradient(146deg, rgba(214,245,255,1) 0%, rgba(142,198,220,1) 100%);
+    box-shadow: 0 5px 10px rgba(47, 50, 51, 0.5);
 }
 
 .nav-text,
@@ -11,6 +12,23 @@
 .navbar-nav {
     gap: 15px;
 }
+
+/* .navbar-nav li > a {
+	color: #333;
+	transition: background-color .2s, color .2s;
+	
+	&:hover,
+	&:focus {
+		background-color: #333;
+		color: #fff;
+	}
+}
+
+.navbar-nav li.active > a {
+    border-radius: 25px;
+	background-color: #333;
+	color: #fff;
+} */
 
 .navbar-hidden {
     transform: translateY(-70px);

@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getProjects } from "../../api/datafinder";
+// import { getProjects } from "../../api/datafinder";
 import { getFirebaseProjects } from "../../api/firebase";
 
 export const loadProjects = createAsyncThunk(

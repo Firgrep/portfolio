@@ -21,14 +21,14 @@ export const Project = ({projectId, setText, setImageUrl}) => {
     }, [dispatch]);
 
     useEffect(() => {
-        if (projects.length > 0 && project?.title) {
+        if (projects.projects.length > 0 && project?.title) {
             setText(project.title);
             setImageUrl(project.imgHeader);
             const combined = project.languages.concat(project.tools);
             setLanguagesTools(combined);
         }
     }, [
-        projects.length,
+        projects.projects.length,
         project?.title,
         project?.languages,
         project?.tools,
@@ -67,7 +67,7 @@ export const Project = ({projectId, setText, setImageUrl}) => {
         )
     }
 
-    if (projects.length === 0) {
+    if (projects.projects.length === 0) {
         return(
             <h2>No projects found!</h2>
         )
@@ -85,7 +85,7 @@ export const Project = ({projectId, setText, setImageUrl}) => {
             justifyContent: "center",
             marginBottom: "50px"
         }}>
-            {projects.length > 0 && (
+            {projects.projects.length > 0 && (
                 <div>
                     <h1 style={{textAlign: "center"}}>{project.title}</h1>
                     <div>
