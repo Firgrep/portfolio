@@ -3,8 +3,8 @@
         "id": 51322435,
         "title": "vStock",
         "description": "Simple stock viewing Django web app geared towards fundamental company data",
-        "descriptionLong": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        "imgHeader": "https://www.filipniklas.com/static/vStockHeader.webp",
+        "descriptionLong": "App where you can search for any US-listed stock and retrieve data in aesthetically pleasing and easy-to-understand graphs. The graphs can be opened in a modal tab and some can be further manipulated. Database stores the data but will refresh it after a certain age, combining the notion of supplying relevant data but not at the expense of overloading the API server.",
+        "imgHeader": "https://www.filipniklas.com/static/images/vStockHeader.webp",
         "languages": [
             "javascript",
             "python",
@@ -25,11 +25,35 @@
         }
     },
     {
+        "id": 51321144,
+        "title": "Portfolio",
+        "description": "This portfolio! Built using React, Redux and many other technologies to showcase software work.",
+        "descriptionLong": "Made to primarily exercise and solidify knowledge in React and Redux. Initially MSW (Mock Service Worker) was used to simulate API data calls under development but it discovered that, while this did technically work for production, a better long-term and scalable solution was found using a BaaS service like Firebase. However, MSW was still very helpful for initial testing and will be kept for future development. Bootstrap has been used mainly as 'CSS skeleton' for its helpful containers and its navbar, but MaterialUI has been used for buttons. EmailJS is used for contact form emails. Marked and DOMPurify is used to convert .md files into .html and to check for injections.",
+        "imgHeader": "https://www.filipniklas.com/static/images/portfolio.webp",
+        "languages": [
+            "javascript",
+            "html",
+            "css"
+        ],
+        "tools": [
+            "react",
+            "redux",
+            "firebase",
+            "materialui",
+            "bootstrap"
+        ],
+        "links": {
+            "src": "https://github.com/Firgrep/portfolio",
+            "live": "",
+            "readme": "https://raw.githubusercontent.com/Firgrep/portfolio/main/Readme.md"
+        }
+    },
+    {
         "id": 51322440,
         "title": "myCV",
         "description": "An interactive client-side web app that allows users to create a simple, yet stylish and effective CV.",
         "descriptionLong": "Long description to come...",
-        "imgHeader": "",
+        "imgHeader": "https://www.filipniklas.com/static/images/mycv.webp",
         "languages": [
             "Javascript",
             "HTML",
@@ -41,19 +65,59 @@
         "links": {
             "src": "https://github.com/Firgrep/mycv",
             "live": "https://www.filipniklas.com/mycv",
-            "readme": ""
+            "readme": "https://raw.githubusercontent.com/Firgrep/mycv/main/README.md"
+        }
+    },
+    {
+        "id": 51327444,
+        "title": "Python YouUpload",
+        "description": "Python script to upload videos to YouTube and add them to a playlist.",
+        "descriptionLong": "Python YouUpload is a script that uploads and schedules a video along with a custom thumbnail to YouTube and adds the new video to an existing playlist (optional). Makes use of YouTube's Data API and OAuth2 authentication.",
+        "imgHeader": "https://www.filipniklas.com/static/images/script.webp",
+        "languages": [
+            "python"
+        ],
+        "tools": [
+            "OAuth2",
+            "YouTube API v3"
+        ],
+        "links": {
+            "src": "https://github.com/Firgrep/python-you-upload",
+            "live": "",
+            "readme": "https://raw.githubusercontent.com/Firgrep/python-you-upload/master/README.md"
+        }
+    },
+    {
+        "id": 51314844,
+        "title": "Python YouEmail",
+        "description": "Python script to automate sending emails using Gmail API.",
+        "descriptionLong": "Python script to automate sending an email to many recipients using Gmail as host. The email itself is written in HTML and can be styled with CSS.",
+        "imgHeader": "https://www.filipniklas.com/static/images/script.webp",
+        "languages": [
+            "python"
+        ],
+        "tools": [
+            "pandas",
+            "EmailMessage",
+            "OAuth2",
+            "Google API Client"
+        ],
+        "links": {
+            "src": "https://github.com/Firgrep/python-you-email",
+            "live": "",
+            "readme": "https://raw.githubusercontent.com/Firgrep/python-you-email/master/README.md"
         }
     },
     {
         "id": 51322479,
         "title": "Other Projects",
         "description": "For more code and projects, please visit GitHub",
-        "descriptionLong": "Long description placeholder",
+        "descriptionLong": "Includes exercises and coursework assignments.",
         "imgHeader": "",
         "languages": [],
         "tools": [],
         "links": {
-            "src": "https://github.com/Firgrep/mycv",
+            "src": "https://github.com/Firgrep",
             "live": "",
             "readme": ""
         }

@@ -1,15 +1,19 @@
 import React from "react";
+import Firebase from '../../assets/firebase.svg';
 import './icon.css';
 
 export const Icon = ({icon, size}) => {
     const supportedIcons = ["redux", "react", "javascript", "python", "django", "matplotlib", "html", "css",
                             "jspdf", "bootstrap", "cplusplus", "pandas", "git", "numpy", "github", "linkedin",
-                            "chartjs", "materialui"];
+                            "chartjs", "materialui", "firebase"];
     const viewBox = "0 0 128 128";
     const fontWeight = "bold";
     const limitSize = "60px";
     const alignCenter = "center";
     const containerMargin = "0 10px";
+
+    // TODO: Refactor code to make use of svg as separate file and make a func to loop
+    // over the icons and data and output the required icon. 
 
     if (!supportedIcons.includes(icon.toLowerCase())) {
         // const iconCapitalized = icon.charAt(0).toUpperCase() + icon.slice(1);
@@ -287,6 +291,18 @@ export const Icon = ({icon, size}) => {
                         getSize(size) === limitSize
                         && 
                         <h5 style={{color: "#1FA6CA", fontWeight: fontWeight}}>MaterialUI</h5>
+                    }
+                </>
+            }
+            {
+                icon.toLowerCase() === "firebase"
+                &&
+                <>
+                    <img src={Firebase} style={{height: getSize(size), width: getSize(size)}} alt=""></img>
+                    {
+                        getSize(size) === limitSize
+                        && 
+                        <h5 style={{color: "#FFCA28", fontWeight: fontWeight}}>Firebase</h5>
                     }
                 </>
             }
