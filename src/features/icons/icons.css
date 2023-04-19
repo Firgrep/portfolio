@@ -2,6 +2,6 @@
     display: inline-flex;
     margin: 10px; 
     flex-wrap: wrap;
-    max-width: 500px;
+    max-width: 525px;
     justify-content: space-evenly;
 }

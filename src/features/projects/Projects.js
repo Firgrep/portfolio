@@ -1,40 +1,46 @@
-import { selectProjects } from "./projectsSlice";
-import { useSelector, useDispatch } from "react-redux";
-import { loadProjects } from "./projectsSlice";
 import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from "react-redux";
+import { selectProjects, selectProjectsState, loadProjects } from "./projectsSlice";
 import { Link } from 'react-router-dom';
 import { Icons } from "../icons/Icons";
 import { Button } from "@mui/material";
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
-import './projects.css'
+import './projects.css';
 
-export const Projects = () => {
+export const Projects = ({displayItems}) => {
     const dispatch = useDispatch();
+    const projectsState = useSelector(selectProjectsState);
     const projects = useSelector(selectProjects);
+    let sliceEnd = 99;
+
+    if (displayItems) {
+        const number = Number(displayItems);
+        sliceEnd = number;
+    }
 
     useEffect(() => {
         dispatch(loadProjects());
     }, [dispatch]);
 
-    if (projects.isLoading === true) {
+    if (projectsState.isLoading === true) {
         return(
             <h2>Loading ... </h2>
         )
     }
 
-    if (projects.hasError === true) {
+    if (projectsState.hasError === true) {
         return(
             <h2>Error in projects data!</h2>
         )
     }
 
-    if (projects.projects === undefined) {
+    if (projectsState.projects === undefined) {
             return(
                 <h2>No projects found. Data is <i>undefined</i>, error likely at API. Check console log for more info.</h2>
             )
         }
 
-    if (projects.projects.length === 0) {
+    if (projects.length === 0) {
         return(
             <h2>No projects found!</h2>
         )
@@ -42,8 +48,7 @@ export const Projects = () => {
 
     return (
         <section>
-            {projects.projects.length > 0 &&
-            projects.projects.map((project) => (
+            {projects.length > 0 && projects.slice(0, sliceEnd).map((project) => (
                 <article key={project.id} className="project-container">
                     <div className="project-image-container">
                         <img

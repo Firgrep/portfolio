@@ -4,23 +4,41 @@ import './index.css';
 
 const Navigation = () => {
     const [prevScrollpos, setPrevScrollpos] = useState(window.pageYOffset);
+    const [smallScreen, setSmallScreen] = useState(
+        window.matchMedia("(max-width: 1000px)").matches
+    );
     const [visible, setVisible] = useState(true);
 
     useEffect(() => {
+        const handleSmallScreen = e => setSmallScreen(e.matches);
+        window
+            .matchMedia("(max-width: 1000px)")
+            .addEventListener('change', handleSmallScreen);
+
+        return () => {
+            window
+                .matchMedia("(max-width: 1000px)")
+                .removeEventListener("change", handleSmallScreen);
+        }
+    }, []);
+
+    useEffect(() => {
         const handleScroll = () => {
-            const currentScrollpos = window.pageYOffset;
-            if (currentScrollpos > prevScrollpos) {
-                setVisible(false);
-            } else {
-                setVisible(true);
+            if (!smallScreen) {
+                const currentScrollpos = window.pageYOffset;
+                if (currentScrollpos > prevScrollpos) {
+                    setVisible(false);
+                } else {
+                    setVisible(true);
+                }
+                setPrevScrollpos(currentScrollpos);
             }
-            setPrevScrollpos(currentScrollpos);
         };
 
         window.addEventListener("scroll", handleScroll);
 
         return () => window.removeEventListener("scroll", handleScroll);
-    }, [prevScrollpos]);
+    }, [prevScrollpos, smallScreen]);
 
     return(
         <nav className={`navbar navbar-expand-lg sticky-top ${visible ? "" : "navbar-hidden"}`}>
@@ -45,7 +63,7 @@ const Navigation = () => {
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div 
-                    className={`collapse navbar-collapse ${visible ? "" : "navbar-hidden"}`}
+                    className={`collapse navbar-collapse`}
                     id="navbarMain"
                 >
                     <ul className="navbar-nav ms-auto">

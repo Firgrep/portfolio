@@ -3,6 +3,8 @@ import Hero from '../../components/hero';
 import ContactForm from '../../components/contactForm';
 import { Projects } from '../../features/projects/Projects';
 import { Icons } from '../../features/icons/Icons';
+import { Link } from 'react-router-dom';
+import { Button } from "@mui/material";
 
 const Home = () => {
     const [largeScreen, setLargeScreen] = useState(
@@ -17,12 +19,23 @@ const Home = () => {
                     "pandas", "jspdf", "chartjs", "materialui"]
 
     useEffect(() => {
+        const handleLargeScreen = e => setLargeScreen(e.matches);
+        const handleLargerScreen = e => setLargerScreen(e.matches);
         window
-        .matchMedia("(min-width: 768px)")
-        .addEventListener('change', e => setLargeScreen(e.matches));
+            .matchMedia("(min-width: 768px)")
+            .addEventListener('change', handleLargeScreen);
         window
-        .matchMedia("(min-width: 1200px)")
-        .addEventListener('change', e => setLargerScreen(e.matches));
+            .matchMedia("(min-width: 1200px)")
+            .addEventListener('change', handleLargerScreen);
+
+        return () => {
+            window
+                .matchMedia("(min-width: 768px)")
+                .removeEventListener("change", handleLargeScreen);
+            window
+                .matchMedia("(min-width: 1200px")
+                .removeEventListener("change", handleLargerScreen);
+        }
     }, []);
 
     return (
@@ -62,7 +75,20 @@ const Home = () => {
                         </div>
                     </div>
                 </section>
-                <Projects />
+                <Projects displayItems="3" />
+                <div className="center-content" style={{margin: "100px"}}>
+                    <Link
+                    to="/projects"
+                    className="site-link"
+                    >
+                        <Button 
+                            variant="outlined"
+                            size="large"
+                        >
+                            See More Projects
+                        </Button>
+                    </Link>
+                </div>
                 <ContactForm />
             </main>
         </>

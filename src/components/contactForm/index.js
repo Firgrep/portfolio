@@ -31,7 +31,7 @@ const ContactForm = () => {
         <section id="contact">
             <div className="container center-content">
                 <div className="contact-container-style">
-                    <h2 className="text-center">Get in touch!</h2>
+                    <h2 className="text-center">Get in Touch!</h2>
                     <form ref={form} onSubmit={sendEmail}>
                         <div className="mb-3">
                             <label htmlFor="formControlInputOne" className="form-label">Name</label>

@@ -11,8 +11,7 @@ const ContactPage = () => {
             />
             <main className="container">
                 <div style={{marginBottom: "100px"}}>
-                    <h1 style={{textAlign: "center"}}>Contact</h1>
-                    <p style={{textAlign: "center"}}>Have questions? Need help with a project? Or just want to say hi?</p>
+                    <h4 style={{textAlign: "center", marginBottom: "50px"}}>Have questions? Need help with a project? Or just want to say hi?</h4>
                     <ContactForm />
                 </div>
             </main>

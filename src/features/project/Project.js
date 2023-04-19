@@ -1,6 +1,6 @@
 import React, {useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { loadProjects, selectProjects, selectProjectById } from "../projects/projectsSlice";
+import { loadProjects, selectProjectsState, selectProjectById } from "../projects/projectsSlice";
 import { Icons } from "../icons/Icons";
 import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
@@ -11,7 +11,7 @@ import '../projects/projects.css';
 
 export const Project = ({projectId, setText, setImageUrl}) => {
     const dispatch = useDispatch();
-    const projects = useSelector(selectProjects);
+    const projectsState = useSelector(selectProjectsState);
     const project = useSelector(state => selectProjectById(state, projectId));
     const [languagesTools, setLanguagesTools] = useState([]);
     const [readmeData, setReadmeData] = useState("");
@@ -21,18 +21,24 @@ export const Project = ({projectId, setText, setImageUrl}) => {
     }, [dispatch]);
 
     useEffect(() => {
-        if (projects.projects.length > 0 && project?.title) {
-            setText(project.title);
-            setImageUrl(project.imgHeader);
+        if (project?.languages && project?.tools) {
             const combined = project.languages.concat(project.tools);
             setLanguagesTools(combined);
         }
     }, [
-        projects.projects.length,
-        project?.title,
         project?.languages,
         project?.tools,
         setLanguagesTools,
+    ])
+
+    useEffect(() => {
+        if (projectsState.projects.length > 0 && project?.title) {
+            setText(project.title);
+            setImageUrl(project.imgHeader);
+        }
+    }, [
+        projectsState.projects.length,
+        project?.title,
         setText,
         setImageUrl,
         project?.imgHeader
@@ -55,19 +61,19 @@ export const Project = ({projectId, setText, setImageUrl}) => {
         fetchReadmeData();
     }, [project?.links.readme])
 
-    if (projects.isLoading === true) {
+    if (projectsState.isLoading === true) {
         return(
             <h2>Loading ... </h2>
         )
     }
 
-    if (projects.hasError === true) {
+    if (projectsState.hasError === true) {
         return(
             <h2>Error in projects data!</h2>
         )
     }
 
-    if (projects.projects.length === 0) {
+    if (projectsState.projects.length === 0) {
         return(
             <h2>No projects found!</h2>
         )
@@ -85,7 +91,7 @@ export const Project = ({projectId, setText, setImageUrl}) => {
             justifyContent: "center",
             marginBottom: "50px"
         }}>
-            {projects.projects.length > 0 && (
+            {projectsState.projects.length > 0 && (
                 <div>
                     <h1 style={{textAlign: "center"}}>{project.title}</h1>
                     <div>
