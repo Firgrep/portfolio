@@ -1,11 +1,11 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getFirebaseProjects } from "../../api/firebase";
+import { getFirebaseProjects } from "../../api/firebase/firebaseRealtimeDatabase";
 
 export const loadProjects = createAsyncThunk(
     "projects/fetchProjects",
     async () => {
         const data = await getFirebaseProjects();
-        return data
+        return data;
     }
 );
 
