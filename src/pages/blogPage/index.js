@@ -1,6 +1,7 @@
 import React from 'react';
 import Hero from '../../components/hero/index.js';
 import { Blog } from '../../features/blog/Blog.js';
+import ErrorBoundary from '../../app/ErroBoundary.js';
 
 const BlogPage = () => {
 
@@ -11,7 +12,9 @@ const BlogPage = () => {
                 type="projects"
             />
             <main className="container">
-                <Blog />
+                <ErrorBoundary fallback="Error in Blog component. Check console log for details.">
+                    <Blog /> 
+                </ErrorBoundary>
             </main>
         </>
     );

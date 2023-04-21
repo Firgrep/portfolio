@@ -67,3 +67,5 @@ To:
     <span>Languages:</span><Icons dataArray={project.languages} />
 </div>}
 ```
+
+I finally learned the difference between forEach and map methods when I was trying to use forEach in my render. I was puzzled when my console logs clearly showed that the variables were defined and outputting value but nothing showed in the UI. I turns out forEach does NOT RETURN anything; and so it is good for performing side-effects on something (such as console.logs), but not if one wants to execute a transformation on a piece of data. 
