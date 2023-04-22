@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectBlogState, selectBlog, loadBlog } from './blogSlice';
-import { formatDateString } from '../../util/util';
-import { Chip } from "@mui/material";
+import { formatDateString, formatTag, formatDateStringYearMonth } from '../../util/util';
+import { Chip, Button } from "@mui/material";
+import { Link } from 'react-router-dom';
 import './blog.css';
 
 
@@ -27,7 +28,6 @@ export const Blog = () => {
         console.log("Blog Slice has loaded with eror.");
         return(
             <h2>Error in blog data! See console log.</h2>
-            
         )
     }
 
@@ -43,7 +43,6 @@ export const Blog = () => {
 
     // let's start from the output. initially, all blog posts will be shown based on no selector
 
-    console.log(Object.entries(blog))
     return(
         <section>
             {blog && Object.keys(blog).length > 0 &&
@@ -52,20 +51,26 @@ export const Blog = () => {
                 <article key={key}>
                     <h2>{content.title}</h2>
                     <ul className="tags">
-                    { content.tags.map((tag) => (
+                    { content?.tags && content.tags.map((tag) => (
                         <li key={tag}>
                             <Chip 
                                 variant="outlined" 
                                 color="primary" 
                                 size="small"
-                                label={`${tag}`}
+                                label={`${formatTag(tag)}`}
                             />
                         </li>
                     ))}
                     </ul>
                     <span>{formatDateString(content.date)}</span>
                     <p>{content.preview}</p>
-                    <p>Read more</p>
+                    <Link
+                        to={`/blog/${key}/${formatDateStringYearMonth(content.date)}/${content.fragment}`}
+                    >
+                        <Button variant="contained">
+                            Read more
+                        </Button>
+                    </Link>
                 </article>    
                 
                 

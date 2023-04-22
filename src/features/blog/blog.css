@@ -6,5 +6,8 @@
 
 .tags li {
     display: inline-block;
+}
+
+.tags li:not(:first-child) {
     padding: 0 0.25rem;
 }

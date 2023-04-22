@@ -1,11 +1,15 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 
 
 const BlogPostPage = () => {
+    const { id, blogpost } = useParams();
 
     return(
         <>
-            Blogpostpage
+            <p>Blogpostpage for:</p>
+            <p>{id}</p>
+            <p>{blogpost}</p>
         </>
     );
 };

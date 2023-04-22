@@ -21,7 +21,7 @@ const appRouter = createHashRouter(createRoutesFromElements(
     <Route path="privacy-policy" element={ <PrivacyPolicyPage /> }> </Route>
     <Route path="/contact" element={ <ContactPage /> }></Route>
     <Route path="/blog" element={ <BlogPage /> }></Route>
-    <Route path="/blog/:timestamp/:blogpost" element={ <BlogPostPage /> }></Route>
+    <Route path="/blog/:id/:timestamp/:blogpost" element={ <BlogPostPage /> }></Route>
   </Route>
 ));
 
