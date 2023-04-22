@@ -35,10 +35,10 @@ export const Projects = ({displayItems}) => {
     }
 
     if (projectsState.projects === undefined) {
-            return(
-                <h2>No projects found. Data is <i>undefined</i>, error likely at API. Check console log for more info.</h2>
-            )
-        }
+        return(
+            <h2>No projects found. Data is <i>undefined</i>, error likely at API. Check console log for more info.</h2>
+        )
+    }
 
     if (projects.length === 0) {
         return(

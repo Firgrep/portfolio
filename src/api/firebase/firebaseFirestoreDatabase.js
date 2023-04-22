@@ -1,5 +1,5 @@
 import { firestore } from './firebase.js';
-import { collection, getDocs } from "firebase/firestore"; 
+import { collection, getDocs, doc, getDoc } from "firebase/firestore"; 
 
 
 export const getFirestoreBlog = async () => {
@@ -24,6 +24,21 @@ export const getFirestoreBlog = async () => {
             data[`${key}`] = dataPrep;
         });
         return data;
+    } catch(error) {
+        console.log(error);
+        throw error;
+    }
+};
+
+export const getFirestoreBlogPost = async (id) => {
+    try {
+        const blogPostRef = doc(firestore, "blog-posts", `${id}`);
+        const blogPostSnap = await getDoc(blogPostRef);
+        if (blogPostSnap.exists()) {
+            return blogPostSnap.data();
+        } else {
+            console.log("No document was found.");
+        }
     } catch(error) {
         console.log(error);
         throw error;

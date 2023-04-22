@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getFirebaseProjects } from "../../api/firebase/firebaseRealtimeDatabase";
 
+
 export const loadProjects = createAsyncThunk(
     "projects/fetchProjects",
     async () => {
@@ -41,6 +42,6 @@ export const selectProjects = state => state.projects.projects;
 
 export const selectProjectById = (state, projectId) => {
     return state.projects.projects.find(project => project.id === projectId);
-}
+};
 
 export default projectsSlice.reducer;

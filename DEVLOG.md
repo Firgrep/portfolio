@@ -34,7 +34,7 @@ Turns out that if you put @media query at the bottom of the css file, it will ta
 
 useParams only retrieves data that has been specified at the level of the router through the exact variable name. E.g. router may have "/projects/:project" and one may try to retrieve the project ID with ```const { id } = useParams()``` but this will return undefined since "id" is not specified explicitly at the router level. Changing it to ```const { project } = useParams()``` resolves this issue. 
 
-I really struggled to retrieve a specific part of a slice from the store. My idea of using .find or .filter were accurate, but I just didn't have the right syntax and stucture. I had tried many overly complicated solutions which I didn't quite understand and which didn't work. What worked is putting it like this in the storeSlice file: 
+I really struggled to retrieve a specific part of a slice from the store. My idea of using .find or .filter were accurate, but I just didn't have the right syntax and stucture. I had tried many overly complicated solutions which I didn't quite understand and which didn't work. What worked is putting it like this in the storeSlice file: \n
 ```
 export const selectProjectById = (state, projectId) => {
     return state.projects.projects.find(project => project.id === projectId);

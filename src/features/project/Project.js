@@ -91,7 +91,7 @@ export const Project = ({projectId, setText, setImageUrl}) => {
             justifyContent: "center",
             marginBottom: "50px"
         }}>
-            {projectsState.projects.length > 0 && (
+            {projectsState.projects?.length > 0 && (
                 <div>
                     <h1 style={{textAlign: "center"}}>{project.title}</h1>
                     <div>

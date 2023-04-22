@@ -39,6 +39,4 @@ export const selectBlogState = state => state.blog;
 
 export const selectBlog = state => state.blog.blog;
 
-// TODO func to select blog posts by id
-
 export default blogSlice.reducer;
