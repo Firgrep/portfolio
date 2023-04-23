@@ -5,6 +5,7 @@ import { selectBlogPostsLoading, selectBlogPostsError, selectBlogPostBodyById } 
 import { BlogPostHeader } from './blogPostHeader';
 import { marked } from 'marked';
 import DOMPurify from 'dompurify';
+import './blogPost.css';
 
 export const BlogPost = ({id, setHeroText}) => {
     const dispatch = useDispatch();
@@ -13,16 +14,33 @@ export const BlogPost = ({id, setHeroText}) => {
     const blogPostBody = useSelector(state => selectBlogPostBodyById(state, id));
     const [postBodyClean, setPostBodyClean] = useState("");
 
+    
+
     useEffect(() => {
         dispatch(loadBlogPost(id));
     }, [dispatch, id]);
 
     useEffect(() => {
-        const cleanPostBody = () => {
+        const markedOptions = {
+            renderer: new marked.Renderer(),
+            highlight: function(code, lang) {
+                const hljs = require('highlight.js');
+                const language = hljs.getLanguage(lang) ? lang : 'plaintext';
+                return hljs.highlight(code, { language }).value;
+            },
+            langPrefix: 'hljs language-',
+        }
+        
+        const cleanPostBody = async () => {
             if (blogPostBody?.body) {
                 try {
-                const html = marked(blogPostBody.body);
+                // const response = await fetch(Test);
+                // const markdownText = await response.text();
+                
+                
+                const html = marked.parse(blogPostBody.body, markedOptions);
                 const sanitizedHtml = DOMPurify.sanitize(html);
+                
                 setPostBodyClean(sanitizedHtml);
                 } catch(error) {
                     console.error(error);

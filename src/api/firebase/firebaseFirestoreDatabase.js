@@ -35,7 +35,13 @@ export const getFirestoreBlogPost = async (id) => {
         const blogPostRef = doc(firestore, "blog-posts", `${id}`);
         const blogPostSnap = await getDoc(blogPostRef);
         if (blogPostSnap.exists()) {
-            return blogPostSnap.data();
+            const dataObj = {
+                id: id
+            }
+            const encodedData = blogPostSnap.data()
+            const decodedData = atob(encodedData.body)
+            dataObj.body = decodedData;
+            return dataObj;
         } else {
             console.log("No document was found.");
         }
