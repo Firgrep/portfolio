@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectBlogState, selectBlog, loadBlog } from './blogSlice';
+import { selectBlogLoading, selectBlogError, selectBlog, loadBlog } from './blogSlice';
 import { formatDateString, formatTag, formatDateStringYearMonth } from '../../util/util';
 import { Chip, Button } from "@mui/material";
 import { Link } from 'react-router-dom';
@@ -9,7 +9,8 @@ import './blog.css';
 
 export const Blog = () => {
     const dispatch = useDispatch();
-    const blogState = useSelector(selectBlogState);
+    const loading = useSelector(selectBlogLoading);
+    const error = useSelector(selectBlogError);
     const blog = useSelector(selectBlog);
 
 
@@ -18,20 +19,20 @@ export const Blog = () => {
     }, [dispatch]);
 
 
-    if (blogState.isLoading === true) {
+    if (loading === true) {
         return(
             <h2>Loading ... </h2>
         )
     }
 
-    if (blogState.hasError === true) {
-        console.log("Blog Slice has loaded with eror.");
+    if (error === true) {
+        console.log("Blog Slice has loaded with error.");
         return(
             <h2>Error in blog data! See console log.</h2>
         )
     }
 
-    if (blogState.blog === undefined) {
+    if (blog === undefined) {
         return(
             <h2>No blog found. Data is <i>undefined</i>, error likely at API. Check console log for more info.</h2>
         )
@@ -44,11 +45,11 @@ export const Blog = () => {
     // let's start from the output. initially, all blog posts will be shown based on no selector
 
     return(
-        <section>
+        <section className="blog-list">
             {blog && Object.keys(blog).length > 0 &&
             Object.entries(blog).map(([key, content]) => (
                 
-                <article key={key}>
+                <article key={key} className="blog-item">
                     <h2>{content.title}</h2>
                     <ul className="tags">
                     { content?.tags && content.tags.map((tag) => (

@@ -1,20 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { loadBlogPost } from './blogPostSlice';
+import { useParams } from 'react-router-dom';
 import { selectBlogPostsLoading, selectBlogPostsError, selectBlogPostBodyById } from './blogPostSlice';
 import { BlogPostHeader } from './blogPostHeader';
 import { marked } from 'marked';
 import DOMPurify from 'dompurify';
 import './blogPost.css';
 
-export const BlogPost = ({id, setHeroText}) => {
+
+export const BlogPost = ({setHeroText}) => {
     const dispatch = useDispatch();
+    const { id } = useParams();
     const loading = useSelector(selectBlogPostsLoading);
     const error = useSelector(selectBlogPostsError);
     const blogPostBody = useSelector(state => selectBlogPostBodyById(state, id));
     const [postBodyClean, setPostBodyClean] = useState("");
-
-    
 
     useEffect(() => {
         dispatch(loadBlogPost(id));
@@ -34,10 +35,6 @@ export const BlogPost = ({id, setHeroText}) => {
         const cleanPostBody = async () => {
             if (blogPostBody?.body) {
                 try {
-                // const response = await fetch(Test);
-                // const markdownText = await response.text();
-                
-                
                 const html = marked.parse(blogPostBody.body, markedOptions);
                 const sanitizedHtml = DOMPurify.sanitize(html);
                 
@@ -48,7 +45,8 @@ export const BlogPost = ({id, setHeroText}) => {
             }
         }
         cleanPostBody();
-    }, [blogPostBody?.body])
+
+    }, [blogPostBody?.body]);
 
     if (loading === true) {
         return(
@@ -70,20 +68,22 @@ export const BlogPost = ({id, setHeroText}) => {
 
     return(
         <>
-
-            <BlogPostHeader setHeroText={setHeroText} />
-            { blogPostBody?.body && 
-                <div 
-                dangerouslySetInnerHTML={{__html: postBodyClean}}
+            <article 
                 style={{
+                    transform: "translateY(-150px)",
                     backgroundColor: "white", 
                     padding: "15px", 
-                    borderRadius: "25px",
-                    boxShadow: "5px 10px 18px #888888"
+                    borderRadius: "0",
+                    boxShadow: "5px 5px 10px #888888",
+                    paddingBottom: "75px",
+                    marginBottom: "-75px"
                 }}
-                ></div>
+            >
+            <BlogPostHeader setHeroText={setHeroText} />
+            { blogPostBody?.body && 
+                <section className="blog-post-contents" dangerouslySetInnerHTML={{__html: postBodyClean}}></section>
             }
-            
+            </article>
         </>
     );
 };

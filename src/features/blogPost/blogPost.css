@@ -1,3 +1,15 @@
+.date-style {
+    color:rgb(148, 148, 148)
+}
+
+.blog-post-contents {
+    font-size: 1.15rem;
+}
+
+.blog-post-contents p {
+    color: #4b5563;
+}
+
 .hljs {
     display: block;
     overflow-x: auto;

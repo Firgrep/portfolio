@@ -90,3 +90,6 @@ It turns out that, if you think more carefully what's happening, Object.entries 
     blogArrayRaw.push(...Object.entries(dataObj));
                       ^^^ the Spread (...) syntax
 ```
+
+
+Significant logical bug where the copied md string into firestore would lose some important data (whitespace, carriage return, etc.). Opted to try encoding and decoding with base64, and got it working! A different script sets the body of the document with an encoded string in base64, which is then retrieved by the web app, which decodes the base64 string back into the semantic string, which later in the app is parsed by marked and DOMPurify, and the rendered output appears as expected. This will increase the size of the data, but it preserves the important details needed for marked to produce the expected output. Another method would be to store the data as an .md file on storage, but since I don't intend my post to be that long, and already have a structure set up with firestore, I decided to go with this route. On the plus side, I learned to encode/decode with javascript using two different programs. 

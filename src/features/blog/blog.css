@@ -1,3 +1,14 @@
+.blog-list {
+    display: flex;
+    justify-content: center;
+    row-gap: 20px;
+}
+
+.blog-item {
+    margin-bottom: 60px;
+    max-width: 500px;
+}
+
 .tags {
     list-style: none;
     padding: 0;
