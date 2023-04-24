@@ -11,7 +11,7 @@ const BlogPostPage = () => {
         <>
             <Hero
                 displayText={heroText}
-                type="projects"
+                type="blog"
             />
             <main className="container">
                 <ErrorBoundary fallback="Error in BlogPost component (or children). Check console log for details.">

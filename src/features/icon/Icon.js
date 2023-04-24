@@ -1,11 +1,12 @@
 import React from "react";
 import Firebase from '../../assets/firebase.svg';
+import Nodejs from '../../assets/nodejs.svg';
 import './icon.css';
 
 export const Icon = ({icon, size}) => {
     const supportedIcons = ["redux", "react", "javascript", "python", "django", "matplotlib", "html", "css",
                             "jspdf", "bootstrap", "cplusplus", "pandas", "git", "numpy", "github", "linkedin",
-                            "chartjs", "materialui", "firebase"];
+                            "chartjs", "materialui", "firebase", "nodejs"];
     const viewBox = "0 0 128 128";
     const fontWeight = "bold";
     const limitSize = "60px";
@@ -303,6 +304,18 @@ export const Icon = ({icon, size}) => {
                         getSize(size) === limitSize
                         && 
                         <h5 style={{color: "#FFCA28", fontWeight: fontWeight}}>Firebase</h5>
+                    }
+                </>
+            }
+            {
+                icon.toLowerCase() === "nodejs"
+                &&
+                <>
+                    <img src={Nodejs} style={{height: getSize(size), width: getSize(size)}} alt=""></img>
+                    {
+                        getSize(size) === limitSize
+                        && 
+                        <h5 style={{color: "#83CD29", fontWeight: fontWeight}}>Node.js</h5>
                     }
                 </>
             }

@@ -18,10 +18,11 @@ import '@fontsource/roboto/700.css';
 // Custom Site CSS (overwrites any matching parameters of Bootstrap)
 import './index.css';
 
-const { worker } = require('./mocks/browser');
-worker.start({
-  onUnhandledRequest: 'bypass',
-});
+// Mock Service Worker used to simulate API requests during development. 
+// const { worker } = require('./mocks/browser');
+// worker.start({
+//   onUnhandledRequest: 'bypass',
+// });
 
 const container = document.getElementById('root');
 const root = createRoot(container);

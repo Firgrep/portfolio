@@ -11,8 +11,9 @@ const ProjectsPage = () => {
                 type="projects"
             />
             <main className="container">
-                <div className="text-container">
-                    <h3>Here you can find projects I've worked on</h3>
+                <div className="text-container" style={{marginBottom: "50px"}}>
+                    <h2>Building Apps</h2>
+                    <p>Please find below a selection of personal projects I've worked on.</p>
                 </div>
                 <Projects />
             </main>

@@ -74,8 +74,8 @@ To:
 
 I finally learned the difference between forEach and map methods when I was trying to use forEach in my render. I was puzzled when my console logs clearly showed that the variables were defined and outputting value but nothing showed in the UI. I turns out forEach does NOT RETURN anything; and so it is good for performing side-effects on something (such as console.logs), but not if one wants to execute a transformation on a piece of data. 
 
-Why is there an unexpected additional nested array in my array? In my processing of data from an API I wanted to access the nested objects in an object, and for this I used Object.entries. Here was my code below:
-```
+Why is there an unexpected additional nested array in my array? In my processing of data from an API I wanted to access the nested objects in an object, and for this I used `Object.entries`. Here was my code below:
+```javascript
 blogCollectionSnapshot.forEach((doc) => {
     // Retrieving actual blog post data
     const dataObj = doc.data();
@@ -85,11 +85,11 @@ blogCollectionSnapshot.forEach((doc) => {
 });
 console.log(blogArrayRaw);
 ```
-It turns out that, if you think more carefully what's happening, Object.entries turns each key-value pair into an array of two elements, one key and one value. These key-value pair arrays are themselves returned as an array. So when I pushed this returned array into my other empty array, I was adding an array to an exsting array, hence I had an additional nested array. It appears the fix for this was to simply add a spread operator in front of Object.entries within the .push() method to "spread" out the array returned by Object.entries, in effect flattening the array, such that .push() then just pushes each of these sub-arrays into the target array, like so:
+It turns out that, if you think more carefully what's happening, `Object.entries` turns each key-value pair into an array of two elements, one key and one value. These key-value pair arrays are themselves returned as an array. So when I pushed this returned array into my other empty array, I was adding an array to an exsting array, hence I had an additional nested array. It appears the fix for this was to simply add a spread operator in front of Object.entries within the .push() method to "spread" out the array returned by Object.entries, in effect flattening the array, such that .push() then just pushes each of these sub-arrays into the target array, like so:
+```javascript
+blogArrayRaw.push(...Object.entries(dataObj));
+                    ^^^ the Spread (...) syntax
 ```
-    blogArrayRaw.push(...Object.entries(dataObj));
-                      ^^^ the Spread (...) syntax
-```
-
+For more on the Spread operator, check the [mdn web docs here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax).
 
 Significant logical bug where the copied md string into firestore would lose some important data (whitespace, carriage return, etc.). Opted to try encoding and decoding with base64, and got it working! A different script sets the body of the document with an encoded string in base64, which is then retrieved by the web app, which decodes the base64 string back into the semantic string, which later in the app is parsed by marked and DOMPurify, and the rendered output appears as expected. This will increase the size of the data, but it preserves the important details needed for marked to produce the expected output. Another method would be to store the data as an .md file on storage, but since I don't intend my post to be that long, and already have a structure set up with firestore, I decided to go with this route. On the plus side, I learned to encode/decode with javascript using two different programs. 

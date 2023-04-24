@@ -21,20 +21,20 @@ export const Blog = () => {
 
     if (loading === true) {
         return(
-            <h2>Loading ... </h2>
+            <h2 style={{textAlign: "center"}}>Loading ... </h2>
         )
     }
 
     if (error === true) {
         console.log("Blog Slice has loaded with error.");
         return(
-            <h2>Error in blog data! See console log.</h2>
+            <h2 style={{textAlign: "center"}}>Error in blog data! See console log.</h2>
         )
     }
 
     if (blog === undefined) {
         return(
-            <h2>No blog found. Data is <i>undefined</i>, error likely at API. Check console log for more info.</h2>
+            <h2 style={{textAlign: "center"}}>No blog found. Data is <i>undefined</i>, error likely at API. Check console log for more info.</h2>
         )
     }
 
@@ -46,24 +46,32 @@ export const Blog = () => {
 
     return(
         <section className="blog-list">
+            <div>
             {blog && Object.keys(blog).length > 0 &&
             Object.entries(blog).map(([key, content]) => (
                 
                 <article key={key} className="blog-item">
-                    <h2>{content.title}</h2>
+                    <h2>
+                        <Link
+                            to={`/blog/${key}/${formatDateStringYearMonth(content.date)}/${content.fragment}`}
+                            className="site-link-extra"
+                        >
+                            {content.title}
+                        </Link>
+                    </h2>
+                    <span className="date-style">{formatDateString(content.date)}</span>
                     <ul className="tags">
                     { content?.tags && content.tags.map((tag) => (
                         <li key={tag}>
                             <Chip 
                                 variant="outlined" 
-                                color="primary" 
+                                color="info" 
                                 size="small"
                                 label={`${formatTag(tag)}`}
                             />
                         </li>
                     ))}
                     </ul>
-                    <span>{formatDateString(content.date)}</span>
                     <p>{content.preview}</p>
                     <Link
                         to={`/blog/${key}/${formatDateStringYearMonth(content.date)}/${content.fragment}`}
@@ -76,6 +84,7 @@ export const Blog = () => {
                 
                 
             ))}
+            </div>
         </section>
     );
 };

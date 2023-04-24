@@ -5,6 +5,8 @@ import { Projects } from '../../features/projects/Projects';
 import { Icons } from '../../features/icons/Icons';
 import { Link } from 'react-router-dom';
 import { Button } from "@mui/material";
+import ReadMoreIcon from '@mui/icons-material/ReadMore';
+
 
 const Home = () => {
     const [largeScreen, setLargeScreen] = useState(
@@ -16,7 +18,7 @@ const Home = () => {
 
     const languages = ["javascript", "python", "cplusplus", "css", "html"]
     const tools = ["react", "redux", "django", "git", "matplotlib", "bootstrap", "numpy",
-                    "pandas", "jspdf", "chartjs", "materialui", "firebase"]
+                    "pandas", "jspdf", "chartjs", "nodejs", "materialui", "firebase"]
 
     useEffect(() => {
         const handleLargeScreen = e => setLargeScreen(e.matches);
@@ -75,6 +77,7 @@ const Home = () => {
                         </div>
                     </div>
                 </section>
+                <h1 style={{textAlign: "center", marginTop: "100px", marginBottom: "25px"}}>Apps I've Built</h1>
                 <Projects displayItems="3" />
                 <div className="center-content" style={{margin: "100px"}}>
                     <Link
@@ -82,8 +85,9 @@ const Home = () => {
                     className="site-link"
                     >
                         <Button 
-                            variant="outlined"
+                            variant="contained"
                             size="large"
+                            endIcon={<ReadMoreIcon />}
                         >
                             See More Projects
                         </Button>

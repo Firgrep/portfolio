@@ -10,6 +10,11 @@ body {
 }
 
 code {
+  padding: 0.2em 0.4em;
+  margin: 0;
+  border-radius: 6px;
+  color: #1f2937;
+  background-color: rgb(175 184 193 / 20%);
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
@@ -29,6 +34,17 @@ code {
 .site-link {
   text-decoration: inherit;
   color: inherit;
+}
+
+.site-link-extra {
+  text-decoration: inherit;
+  color: inherit;
+  border-bottom: 2px solid black;
+  border-bottom-color: transparent;
+}
+
+.site-link-extra:hover {
+  border-bottom-color: navy;
 }
 
 @media only screen and (max-width: 1000px) {

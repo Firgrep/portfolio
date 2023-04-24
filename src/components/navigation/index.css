@@ -35,6 +35,6 @@
     transition: transform 0.4s ease-in-out;
 }
 
-li {
+.nav-item {
     font-size: 1.25rem;
 }

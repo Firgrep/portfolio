@@ -29,20 +29,20 @@ export const BlogPostHeader = ({ setHeroText }) => {
 
     if (loading === true) {
         return(
-            <h2>Loading ... </h2>
+            <h2 style={{textAlign: "center"}}>Loading ... </h2>
         )
     }
 
     if (error === true) {
         console.log("Blog Slice has loaded with error.");
         return(
-            <h2>Error in blog data! See console log.</h2>
+            <h2 style={{textAlign: "center"}}>Error in blog data! See console log.</h2>
         )
     }
 
     if (blogPostDetails === undefined) {
         return(
-            <h2>No blog post details found. Data is <i>undefined</i>, error likely at API. Check console log for more info.</h2>
+            <h2 style={{textAlign: "center"}}>No blog post details found. Data is <i>undefined</i>, error likely at API. Check console log for more info.</h2>
         )
     }
 

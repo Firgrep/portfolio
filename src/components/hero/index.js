@@ -52,9 +52,13 @@ export default Hero;
 const getHeroImage = (type) => {
     switch (type) {
         case 'projects':
-            return 'projects.jpg'
+            return 'projects.jpg';
         case 'project':
-            return '../projects.jpg'
+            return '../projects.jpg';
+        case 'blog':
+            return 'blog.webp';
+        case 'contact':
+            return 'contact.webp';
         default: 
             return 'hero.webp';
     }
@@ -63,9 +67,13 @@ const getHeroImage = (type) => {
 const getHeroHeight = (type) => {
     switch (type) {
         case 'projects':
-            return '400px'
+            return '400px';
         case 'project':
-            return '400px'
+            return '400px';
+        case 'blog':
+            return '400px';
+        case 'contact':
+            return '400px';
         default: 
             return '650px';
     }

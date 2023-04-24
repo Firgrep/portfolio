@@ -7,7 +7,7 @@ const ContactPage = () => {
         <>
             <Hero 
                 displayText="Contact"
-                type="project"
+                type="contact"
             />
             <main className="container">
                 <div style={{marginBottom: "100px"}}>

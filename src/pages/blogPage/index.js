@@ -9,7 +9,7 @@ const BlogPage = () => {
         <>
             <Hero
                 displayText="Blog"
-                type="projects"
+                type="blog"
             />
             <main className="container">
                 <ErrorBoundary fallback="Error in Blog component. Check console log for details.">
