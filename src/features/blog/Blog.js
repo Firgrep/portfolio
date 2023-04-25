@@ -1,7 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectBlogLoading, selectBlogError, selectBlog, loadBlog } from './blogSlice';
 import { formatDateString, formatTag, formatDateStringYearMonth } from '../../util/util';
+import { BlogFilterSelection } from './BlogFilterSelection';
+import ErrorBoundary from '../../app/ErroBoundary';
 import { Chip, Button } from "@mui/material";
 import { Link } from 'react-router-dom';
 import './blog.css';
@@ -12,11 +14,48 @@ export const Blog = () => {
     const loading = useSelector(selectBlogLoading);
     const error = useSelector(selectBlogError);
     const blog = useSelector(selectBlog);
+    const [ tagsObj, setTagsObj ] = useState({});
+    const [ selectedTags, setSelectedTags ] = useState({});
 
+
+    const populateTags = (tag) => {// setTagObj expects an object assignment, not a number, so the whole thing needs to be copied over.
+        const tagLower = tag.toLowerCase();
+
+        setTagsObj(prevTagObj => {
+            if (!prevTagObj.hasOwnProperty(tagLower)) {
+                return {...prevTagObj, [tagLower]: 1};
+            } else {
+                return {...prevTagObj, [tagLower]: prevTagObj[tagLower] + 1};
+            }
+        });
+    }
+
+    const populateTagsSelection = (tag) => {
+        const tagLower = tag.toLowerCase();
+
+        setSelectedTags(prevTagObj => {
+            if (!prevTagObj.hasOwnProperty(tagLower)) {
+                return {...prevTagObj, [tagLower]: false};
+            } else {
+                return prevTagObj;
+            }
+        })
+    }
 
     useEffect(() => {
         dispatch(loadBlog());
     }, [dispatch]);
+
+    useEffect(() => {
+        if (Object.keys(blog).length !== 0) {
+            Object.entries(blog).forEach(([key, content]) => (
+                content.tags.forEach((tag) => {
+                    populateTags(tag)
+                    populateTagsSelection(tag)
+                })
+        ))};
+        
+    }, [blog])
 
 
     if (loading === true) {
@@ -46,6 +85,14 @@ export const Blog = () => {
 
     return(
         <section className="blog-list">
+            <ErrorBoundary fallback="Error in BlogFilterSelect Comp. See console for more details.">
+                <BlogFilterSelection 
+                    tagsObj={tagsObj}
+                    selectedTags={selectedTags}
+                    setSelectedTags={setSelectedTags}
+                />
+            </ErrorBoundary>
+
             <div>
             {blog && Object.keys(blog).length > 0 &&
             Object.entries(blog).map(([key, content]) => (
