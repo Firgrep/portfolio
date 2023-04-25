@@ -7,6 +7,11 @@
 
 }
 
+.blog-box {
+    min-width: 30%;
+    min-height: 40%;
+}
+
 .blog-item {
     margin-bottom: 60px;
     max-width: 700px;

@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectBlogLoading, selectBlogError, selectBlog, loadBlog } from './blogSlice';
-import { formatDateString, formatTag, formatDateStringYearMonth } from '../../util/util';
 import { BlogFilterSelection } from './BlogFilterSelection';
 import ErrorBoundary from '../../app/ErroBoundary';
-import { Chip, Button } from "@mui/material";
-import { Link } from 'react-router-dom';
+import { BlogItem } from './BlogItem';
 import './blog.css';
 
 
@@ -14,14 +12,22 @@ export const Blog = () => {
     const loading = useSelector(selectBlogLoading);
     const error = useSelector(selectBlogError);
     const blog = useSelector(selectBlog);
-    const [ tagsObj, setTagsObj ] = useState({});
-    const [ selectedTags, setSelectedTags ] = useState({});
+    const [ tagsObjCount, setTagsObjCount ] = useState({});
+    const [ tagsObjSelected, setTagsObjSelected ] = useState({});
+    const [ selectedTagsArr, setSelectedTagsArr ] = useState([]);
 
+    const controlSelectedTags = (tagObj) => {
+        setSelectedTagsArr(() => {
+            const preSelection = Object.entries(tagObj).filter(([key, value]) => value === true);
+            const selection = preSelection.flat().filter(item => typeof item === "string");
+            return selection;
+        })
+    }
 
-    const populateTags = (tag) => {// setTagObj expects an object assignment, not a number, so the whole thing needs to be copied over.
+    const populateTagsCount = (tag) => {// setTagObj expects an object assignment, not a number, so the whole thing needs to be copied over.
         const tagLower = tag.toLowerCase();
 
-        setTagsObj(prevTagObj => {
+        setTagsObjCount(prevTagObj => {
             if (!prevTagObj.hasOwnProperty(tagLower)) {
                 return {...prevTagObj, [tagLower]: 1};
             } else {
@@ -33,7 +39,7 @@ export const Blog = () => {
     const populateTagsSelection = (tag) => {
         const tagLower = tag.toLowerCase();
 
-        setSelectedTags(prevTagObj => {
+        setTagsObjSelected(prevTagObj => {
             if (!prevTagObj.hasOwnProperty(tagLower)) {
                 return {...prevTagObj, [tagLower]: false};
             } else {
@@ -41,6 +47,28 @@ export const Blog = () => {
             }
         })
     }
+
+    /**
+     * Filters nested objects based on any matching value between individual object's set of tags
+     * and the controlled array.
+     * @param {object} blogObj - blog data object - Contains data about blog posts.
+     * @param {array} controlArr - selected tags array - List of currently selected tags.
+     * @returns {array} Filtered array of arrays where each sub-array contains key-value pair.
+     */
+    const filterForSelectedTags = (blogObj, controlArr) => { // See bottom for alternative func using methods and callbacks
+        const arrayOfEntries = Object.entries(blogObj);
+        const filteredEntriesArray = [];
+        for (let i = 0; i < arrayOfEntries.length; i++) {
+            for (let j = 0; j < arrayOfEntries[i][1].tags.length; j++) {
+                for (let k = 0; k < controlArr.length; k++) {
+                    if (arrayOfEntries[i][1].tags[j] === controlArr[k]) {
+                        filteredEntriesArray.push(arrayOfEntries[i])
+                    }
+                }
+            }
+        }
+        return filteredEntriesArray;
+    };
 
     useEffect(() => {
         dispatch(loadBlog());
@@ -50,12 +78,18 @@ export const Blog = () => {
         if (Object.keys(blog).length !== 0) {
             Object.entries(blog).forEach(([key, content]) => (
                 content.tags.forEach((tag) => {
-                    populateTags(tag)
+                    populateTagsCount(tag)
                     populateTagsSelection(tag)
                 })
         ))};
         
     }, [blog])
+
+    useEffect(() => {
+        if (Object.keys(tagsObjSelected).length !== 0) {
+            controlSelectedTags(tagsObjSelected);
+        }
+    }, [tagsObjSelected])
 
 
     if (loading === true) {
@@ -77,61 +111,35 @@ export const Blog = () => {
         )
     }
 
-    // we need a function that gets all the tags from all blog posts, but does not add duplicate tags,
-    // it then renders these tags at the top of the page. should this be its own comp or part of this comp?
-    // initially, these renders need to be buttons, none of them selected such that all blog posts are displayed (arranged according to date)
-
-    // let's start from the output. initially, all blog posts will be shown based on no selector
-
     return(
         <section className="blog-list">
             <ErrorBoundary fallback="Error in BlogFilterSelect Comp. See console for more details.">
                 <BlogFilterSelection 
-                    tagsObj={tagsObj}
-                    selectedTags={selectedTags}
-                    setSelectedTags={setSelectedTags}
+                    tagsObj={tagsObjCount}
+                    selectedTags={tagsObjSelected}
+                    setSelectedTags={setTagsObjSelected}
                 />
             </ErrorBoundary>
 
             <div>
-            {blog && Object.keys(blog).length > 0 &&
-            Object.entries(blog).map(([key, content]) => (
+                {blog && Object.keys(blog).length > 0 &&
+                selectedTagsArr.length === 0 
                 
-                <article key={key} className="blog-item">
-                    <h2>
-                        <Link
-                            to={`/blog/${key}/${formatDateStringYearMonth(content.date)}/${content.fragment}`}
-                            className="site-link-extra"
-                        >
-                            {content.title}
-                        </Link>
-                    </h2>
-                    <span className="date-style">{formatDateString(content.date)}</span>
-                    <ul className="tags">
-                    { content?.tags && content.tags.map((tag) => (
-                        <li key={tag}>
-                            <Chip 
-                                variant="outlined" 
-                                color="info" 
-                                size="small"
-                                label={`${formatTag(tag)}`}
-                            />
-                        </li>
-                    ))}
-                    </ul>
-                    <p>{content.preview}</p>
-                    <Link
-                        to={`/blog/${key}/${formatDateStringYearMonth(content.date)}/${content.fragment}`}
-                    >
-                        <Button variant="contained">
-                            Read more
-                        </Button>
-                    </Link>
-                </article>    
-                
-                
-            ))}
+                ?
+            
+                Object.entries(blog).map(([id, content]) => (
+                    <BlogItem key={id} content={content} />
+                ))
+
+                :
+
+                filterForSelectedTags(blog, selectedTagsArr).map(([id, content]) => (
+                    <BlogItem key={id} content={content} />
+                ))}
             </div>
         </section>
     );
 };
+
+// Alt version of filtering for selected tags chaining methods and callbacks:
+// Object.entries(blog).filter(([key, value]) => {return selectedTagsArr.some(tag => value.tags.includes(tag))}).map(([id, content])

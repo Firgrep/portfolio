@@ -4,10 +4,8 @@ import { ToggleButton, Chip } from '@mui/material';
 
 export const BlogFilterSelection = ({ tagsObj, selectedTags, setSelectedTags }) => {
     
-
     const handleClick = (e) => {
-        console.log(e.target);
-        const value = e.target.value;
+        const value = e.currentTarget.value;
         if (typeof value !== "undefined") {
             setSelectedTags(prevTagObj => {
                 if (prevTagObj[value] === false) {
@@ -18,9 +16,13 @@ export const BlogFilterSelection = ({ tagsObj, selectedTags, setSelectedTags }) 
         }
     }
 
-
     return (
-        <section style={{display: "flex", justifyContent: "center", gap: "15px"}}>
+        <section style={{
+            display: "flex", 
+            justifyContent: "center", 
+            gap: "15px", 
+            marginBottom: "65px"
+        }}>
             
             {Object.keys(tagsObj).length > 1 &&
                 Object.entries(tagsObj).map(([tagName, tagCount]) => (
@@ -30,9 +32,15 @@ export const BlogFilterSelection = ({ tagsObj, selectedTags, setSelectedTags }) 
                         onChange={handleClick}
                         value={tagName}
                         color="secondary"
+                        size="small"
                         
                     >
-                        {tagName} &nbsp;&nbsp; {tagCount}
+                        {tagName} &nbsp;&nbsp; <Chip 
+                            label={tagCount} 
+                            size="small" 
+                            color="info"
+                            variant="outlined"
+                        />
                     </ToggleButton>
                     </div>
                 ))

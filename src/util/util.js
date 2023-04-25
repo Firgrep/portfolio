@@ -22,10 +22,18 @@ export const formatDateStringYearMonth = (dateString) => {
 }
 
 export const formatTag = (tag) => {
-    const supportedTagsSimple = ["react", "redux"]
+    const supportedTagsSimple = ["react", "redux", "python", "django", "firebase"]
 
     if (tag.toLowerCase() === "javascript") {
         return "JavaScript";
+    }
+
+    if (tag.toLowerCase() === "css") {
+        return "CSS";
+    }
+
+    if (tag.toLowerCase() === "html") {
+        return "HTML";
     }
 
     if (supportedTagsSimple.includes(tag.toLowerCase())) {
