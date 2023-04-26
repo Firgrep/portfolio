@@ -19,8 +19,10 @@ export const Projects = ({displayItems}) => {
     }
 
     useEffect(() => {
-        dispatch(loadProjects());
-    }, [dispatch]);
+        if (projects?.length === 0) {
+            dispatch(loadProjects());
+        }
+    }, [dispatch, projects]);
 
     if (projectsState.isLoading === true) {
         return(

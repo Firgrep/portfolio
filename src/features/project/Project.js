@@ -17,8 +17,10 @@ export const Project = ({projectId, setText, setImageUrl}) => {
     const [readmeData, setReadmeData] = useState("");
 
     useEffect(() => {
-        dispatch(loadProjects());
-    }, [dispatch]);
+        if (!project) {
+            dispatch(loadProjects());
+        }
+    }, [dispatch, project]);
 
     useEffect(() => {
         if (project?.languages && project?.tools) {

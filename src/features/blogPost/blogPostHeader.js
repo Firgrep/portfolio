@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectBlogLoading, selectBlogError, selectBlogDetailsById, loadBlog } from '../blog/blogSlice';
+import { selectBlogLoading, selectBlogError, selectBlogDetailsById, selectBlogLoaded, loadBlog } from '../blog/blogSlice';
 import { useParams } from 'react-router-dom';
 import { Chip } from "@mui/material";
 import { formatDateString, formatTag } from '../../util/util';
@@ -12,11 +12,14 @@ export const BlogPostHeader = ({ setHeroText }) => {
     const { id } = useParams();
     const loading = useSelector(selectBlogLoading);
     const error = useSelector(selectBlogError);
+    const loaded = useSelector(selectBlogLoaded);
     const blogPostDetails = useSelector(state => selectBlogDetailsById(state, id));
 
     useEffect(() => {
-        dispatch(loadBlog());
-    }, [dispatch]);
+        if (!loaded) {
+            dispatch(loadBlog());
+        }
+    }, [dispatch, loaded]);
 
     useEffect(() => {
         if (blogPostDetails) {

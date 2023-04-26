@@ -14,7 +14,8 @@ export const blogSlice = createSlice({
     initialState: {
         blog: {},
         isLoading: false,
-        hasError: false
+        hasError: false,
+        loaded: false
     },
     reducers: {},
     extraReducers: builder => {
@@ -22,15 +23,18 @@ export const blogSlice = createSlice({
             .addCase(loadBlog.pending, (state, action) => {
                 state.isLoading = true;
                 state.hasError = false;
+                state.loaded = false;
             })
             .addCase(loadBlog.fulfilled, (state, action) => {
                 state.blog = action.payload;
                 state.isLoading = false;
                 state.hasError = false;
+                state.loaded = true;
             })
             .addCase(loadBlog.rejected, (state, action) => {
                 state.isLoading = false;
                 state.hasError = true;
+                state.loaded = false;
             });
     }
 });
@@ -38,6 +42,8 @@ export const blogSlice = createSlice({
 export const selectBlogLoading = state => state.blog.isLoading;
 
 export const selectBlogError = state => state.blog.hasError;
+
+export const selectBlogLoaded = state => state.blog.loaded;
 
 export const selectBlog = state => state.blog.blog;
 

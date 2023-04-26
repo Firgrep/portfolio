@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { HashLink } from 'react-router-hash-link';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import './index.css';
 
 const Hero = ({ image, displayText, type }) => {
+
+    useEffect(() => {
+        AOS.init();
+    }, [])
     
     return (
         <div
+            data-aos="fade-in"
             className="hero-container"
             style={{
                 backgroundImage: `linear-gradient(transparent, transparent), url("${
@@ -30,13 +37,13 @@ const Hero = ({ image, displayText, type }) => {
                 !displayText 
                 &&
                 <>  
-                    <div className="greetings" style={{position: `${displayText ? "" : "absolute"}`}}>
-                        <h1 >Hi! I'm Filip,<br></br>I'm a software developer</h1>
+                    <div data-aos="fade-down-left" data-aos-delay="1000" className="greetings" style={{position: `${displayText ? "" : "absolute"}`}}>
+                        <h1>Hi! I'm Filip,<br></br>I'm a software developer</h1>
                     </div>
-                    <div className="avatar-container" style={{position: `${displayText ? "" : "absolute"}`}}>
+                    <div data-aos="fade-left" data-aos-delay="1400" className="avatar-container" style={{position: `${displayText ? "" : "absolute"}`}}>
                         <img className="img-fluid avatar" src="avatar.jpg" alt=""></img>
                     </div>
-                    <div className="card" style={{position: `${displayText ? "" : "absolute"}`}}>
+                    <div data-aos="fade-up" data-aos-delay="1800" className="card" style={{position: `${displayText ? "" : "absolute"}`}}>
                         <div className="card-body">
                         I sit at the intersection of web development and data analysis to extract insights and present them in a beautiful and easy-to-understand way that helps your business grow. <HashLink smooth to="/#contact">Get in touch!</HashLink>
                         </div>

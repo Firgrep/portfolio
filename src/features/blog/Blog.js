@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectBlogLoading, selectBlogError, selectBlog, loadBlog } from './blogSlice';
+import { selectBlogLoading, selectBlogError, selectBlog, selectBlogLoaded, loadBlog } from './blogSlice';
 import { BlogFilterSelection } from './BlogFilterSelection';
 import ErrorBoundary from '../../app/ErroBoundary';
 import { BlogItem } from './BlogItem';
@@ -12,6 +12,7 @@ export const Blog = () => {
     const loading = useSelector(selectBlogLoading);
     const error = useSelector(selectBlogError);
     const blog = useSelector(selectBlog);
+    const loaded = useSelector(selectBlogLoaded);
     const [ tagsObjCount, setTagsObjCount ] = useState({});
     const [ tagsObjSelected, setTagsObjSelected ] = useState({});
     const [ selectedTagsArr, setSelectedTagsArr ] = useState([]);
@@ -24,7 +25,7 @@ export const Blog = () => {
         })
     }
 
-    const populateTagsCount = (tag) => {// setTagObj expects an object assignment, not a number, so the whole thing needs to be copied over.
+    const populateTagsCount = (tag) => {// setTagObjCount expects an object assignment, not a number, so the whole thing needs to be copied over.
         const tagLower = tag.toLowerCase();
 
         setTagsObjCount(prevTagObj => {
@@ -71,8 +72,10 @@ export const Blog = () => {
     };
 
     useEffect(() => {
-        dispatch(loadBlog());
-    }, [dispatch]);
+        if (!loaded) {
+            dispatch(loadBlog());
+        }
+    }, [dispatch, loaded]);
 
     useEffect(() => {
         if (Object.keys(blog).length !== 0) {

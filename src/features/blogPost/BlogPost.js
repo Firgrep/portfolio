@@ -18,8 +18,10 @@ export const BlogPost = ({setHeroText}) => {
     const [postBodyClean, setPostBodyClean] = useState("");
 
     useEffect(() => {
-        dispatch(loadBlogPost(id));
-    }, [dispatch, id]);
+        if (!blogPostBody) {
+            dispatch(loadBlogPost(id));
+        }
+    }, [dispatch, id, blogPostBody]);
 
     useEffect(() => {
         const markedOptions = {

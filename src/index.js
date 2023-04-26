@@ -1,7 +1,8 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
-import { store } from './app/store';
+import { store, persistor } from './app/storeConfig.js';
+import { PersistGate } from 'redux-persist/integration/react'
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
@@ -27,11 +28,13 @@ import './index.css';
 const container = document.getElementById('root');
 const root = createRoot(container);
 root.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </React.StrictMode>
+    <PersistGate loading={<div>loading...</div>} persistor={persistor}>
+      <Provider store={store}>
+        <React.StrictMode>
+          <App />
+        </React.StrictMode>
+      </Provider>
+    </PersistGate>
 );
 
 // If you want to start measuring performance in your app, pass a function
