@@ -97,3 +97,21 @@ Significant logical bug where the copied md string into firestore would lose som
 Small bug where, if you have something nested within a button and you try to retrieve its value with `e.target.value`, it may sometimes return undefined. This is because you click on the nested element and not on the button. To fix this, use `e.currentTarget.value`, and it will return the expected value even if you click on the nested element. 
 
 I was having issues with my blog tags counter counting double (even double the usual from React.Strictmode), and looking into the matter I discovered that Redux doesn't actually (at least does not necessitate) the preserving of state between pages or even website refreshes. Between pages this was a particular problem. I found a tool called redux-persist which allows one to save the store into the browser's sessionStorage (or localStorage), but after implementing this, it didn't solve my problem. Looking into the matter further, I found that the useEffect hooks I used to load data were actually being dispatched all the time. I checked in with ChatGPT to debug and figure out a way, and it suggested I implement conditionals into the useEffect in charge of loading the data to first load it from sessionStorage through redux-perist and, if the slice was still empty, then call the thunk to fetch new data from the database. It seemed to me _a lot_ of extra code just for something rather simple, so I tried first with just putting in the conditional to check if the slice was falsy (I actually first tried with an additional state property called .loaded), and this seemed to sort out my issues! I then put in similar or corresponding conditionals into the rest of my components and Redux stopped fetching when it already had the data. It seems I actually didn't need redux-persist this time and that the real error was in the lack of proper conditionals for the useEffect hooks. In any case, redux-persist does helpfully keep the data between pages or between refreshes, as long as one doesn't close the tab or the browser. I think, however, that putting into the control flow that the useEffect hooks try to load the store from sessionStorage first, before checking the slice, or checking the slice and attempt to load from sessionStorage _and then_ attempt to fetch from database, would be an extra layer of better optimization. But I hesistate at this point because I don't want to import a lot of Redux and redux-persist files into my components, and would rather find another solution where a function is called by the components to try to load from the sessionStorage before trying the fetch. 
+
+On redux-persist: https://stackoverflow.com/questions/70468548/how-do-i-persist-my-redux-state-with-local-storage
+
+Alt version of filtering for selected tags chaining methods and callbacks:
+This func is bugged/incomplete. An additional loop within the if checker is required to loop over the `filteredEntriesArray` in order to check for duplicates, in which case the item should not be pushed into the array. In its current state, the func causes duplication of same-ID children. I think it's at this point better to use built-in methods to solve the issue, as the amount of nested loops is becoming difficult to read.
+```javascript
+const arrayOfEntries = Object.entries(blogObj);
+const filteredEntriesArray = []
+for (let i = 0; i < arrayOfEntries.length; i++) {
+    for (let j = 0; j < arrayOfEntries[i][1].tags.length; j++) {
+        for (let k = 0; k < controlArr.length; k++) {
+            if (arrayOfEntries[i][1].tags[j] === controlArr[k]) {
+                filteredEntriesArray.push(arrayOfEntries[i])
+            }
+        }
+    }
+}
+```

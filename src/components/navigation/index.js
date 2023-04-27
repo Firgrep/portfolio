@@ -1,5 +1,6 @@
-import React, { useState, useEffect, useTransition } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, NavLink } from 'react-router-dom';
+import { Icon } from '../../features/icon/Icon';
 import './index.css';
 
 const Navigation = () => {
@@ -8,7 +9,6 @@ const Navigation = () => {
         window.matchMedia("(max-width: 1000px)").matches
     );
     const [visible, setVisible] = useState(true);
-    const [ isLoading, startTransition] = useTransition();
 
     useEffect(() => {
         const handleSmallScreen = e => setSmallScreen(e.matches);
@@ -78,9 +78,17 @@ const Navigation = () => {
                         </li>
                         <li className="nav-item">
                             <NavLink 
+                                to="/about"
+                                className="nav-link"
+                            >
+                                About
+                            </NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink 
                                 to="/projects"
                                 className="nav-link"
-                                
+                                                         
                             >
                                 Projects
                             </NavLink>
@@ -102,6 +110,16 @@ const Navigation = () => {
                             >
                                 Contact
                             </NavLink>
+                        </li>
+                        <li className="nav-item nav-item-icon">
+                            <Link className="site-link" to="https://github.com/Firgrep" target="_blank">
+                                <Icon icon="github" size="supertiny"/>
+                            </Link>
+                        </li>
+                        <li className="nav-item nav-item-icon">
+                            <Link className="site-link" to="https://www.linkedin.com/in/filip-niklas/" target="_blank">
+                                <Icon icon="linkedin" size="supertiny"/>
+                            </Link>
                         </li>
                     </ul>
                 </div>

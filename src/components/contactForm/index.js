@@ -35,6 +35,7 @@ const ContactForm = () => {
                         <div className="mb-3">
                             <label htmlFor="formControlInputOne" className="form-label">Name</label>
                             <input
+                                aria-label="Name"
                                 className="form-control"
                                 id="formControlInputOne" 
                                 type="text"
@@ -46,6 +47,7 @@ const ContactForm = () => {
                         <div className="mb-3">
                             <label htmlFor="formControlInputTwo" className="form-label">Email Address</label>
                             <input 
+                                aria-label="Email address"
                                 className="form-control"
                                 id="formControlInputTwo" 
                                 type="email"
@@ -57,6 +59,7 @@ const ContactForm = () => {
                         <div className="mb-3">
                             <label htmlFor="formControlInputThree" className="form-label">Subject</label>
                             <input 
+                                aria-label="The subject of your email"
                                 className="form-control"
                                 id="formControlInputThree" 
                                 type="text"
@@ -68,6 +71,7 @@ const ContactForm = () => {
                         <div className="mb-3">
                             <label htmlFor="formControlInputFour" className="form-label">Message</label>
                             <textarea 
+                                aria-label="The body of the email message"
                                 className="form-control"
                                 name="message"
                                 id="formControlInputFour"

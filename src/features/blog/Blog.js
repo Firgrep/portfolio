@@ -56,18 +56,9 @@ export const Blog = () => {
      * @param {array} controlArr - selected tags array - List of currently selected tags.
      * @returns {array} Filtered array of arrays where each sub-array contains key-value pair.
      */
-    const filterForSelectedTags = (blogObj, controlArr) => { // See bottom for alternative func using methods and callbacks
+    const filterForSelectedTags = (blogObj, controlArr) => { // See bottom for alternative (incomplete)
         const arrayOfEntries = Object.entries(blogObj);
-        const filteredEntriesArray = [];
-        for (let i = 0; i < arrayOfEntries.length; i++) {
-            for (let j = 0; j < arrayOfEntries[i][1].tags.length; j++) {
-                for (let k = 0; k < controlArr.length; k++) {
-                    if (arrayOfEntries[i][1].tags[j] === controlArr[k]) {
-                        filteredEntriesArray.push(arrayOfEntries[i])
-                    }
-                }
-            }
-        }
+        const filteredEntriesArray = arrayOfEntries.filter(([key, value]) => {return controlArr.some(tag => value.tags.includes(tag))});
         return filteredEntriesArray;
     };
 
@@ -143,6 +134,3 @@ export const Blog = () => {
         </section>
     );
 };
-
-// Alt version of filtering for selected tags chaining methods and callbacks:
-// Object.entries(blog).filter(([key, value]) => {return selectedTagsArr.some(tag => value.tags.includes(tag))}).map(([id, content])

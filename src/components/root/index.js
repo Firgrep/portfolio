@@ -7,7 +7,9 @@ const Root = () => {
     return (
         <>
             <Navigation />
-            <Suspense>
+            <Suspense 
+                fallback={<div style={{height: "1000px"}}></div>}
+            >
                 <Outlet />
             </Suspense>
             <ScrollRestoration />

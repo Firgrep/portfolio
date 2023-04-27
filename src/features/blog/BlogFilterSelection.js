@@ -21,7 +21,8 @@ export const BlogFilterSelection = ({ tagsObj, selectedTags, setSelectedTags }) 
             display: "flex", 
             justifyContent: "center", 
             gap: "15px", 
-            marginBottom: "65px"
+            marginBottom: "65px",
+            flexWrap: "wrap"
         }}>
             
             {Object.keys(tagsObj).length > 1 &&
@@ -33,14 +34,19 @@ export const BlogFilterSelection = ({ tagsObj, selectedTags, setSelectedTags }) 
                         value={tagName}
                         color="secondary"
                         size="small"
-                        
                     >
-                        {tagName} &nbsp;&nbsp; <Chip 
-                            label={tagCount} 
-                            size="small" 
-                            color="info"
+                        {tagName}<br></br>
+                        <Chip
+                            label={tagCount}
                             variant="outlined"
+                            size="small"
+                            color="info"
+                            style={{marginLeft: "1px"}}
+                        
                         />
+
+                        {/* {`[${tagCount}]`} */}
+                        
                     </ToggleButton>
                     </div>
                 ))

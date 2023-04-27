@@ -38,3 +38,8 @@
 .nav-item {
     font-size: 1.25rem;
 }
+
+.nav-item-icon {
+    display: flex;
+    align-items: center;
+}

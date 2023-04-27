@@ -327,6 +327,8 @@ export const Icon = ({icon, size}) => {
 
 const getSize = (size) => {
     switch (size) {
+        case 'supertiny':
+            return '27px';
         case 'tiny':
             return '40px';
         case 'large':
