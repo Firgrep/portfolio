@@ -13,7 +13,7 @@ const Footer = () => {
                             <h2>Filip Niklas</h2>
                             <div className="center-content" style={{flexGrow: "1"}}>
                                 <div style={{width: "50px"}}>
-                                    <img className="img-fluid avatar-footer" src="avatar.jpg" alt=""></img>
+                                    <img className="img-fluid avatar-footer" src="avatar.webp" alt=""></img>
                                 </div>
                             </div>
                             <p className="text-footer">

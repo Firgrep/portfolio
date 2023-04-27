@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useTransition } from 'react';
 import { NavLink } from 'react-router-dom';
 import './index.css';
 
@@ -8,6 +8,7 @@ const Navigation = () => {
         window.matchMedia("(max-width: 1000px)").matches
     );
     const [visible, setVisible] = useState(true);
+    const [ isLoading, startTransition] = useTransition();
 
     useEffect(() => {
         const handleSmallScreen = e => setSmallScreen(e.matches);
@@ -79,6 +80,7 @@ const Navigation = () => {
                             <NavLink 
                                 to="/projects"
                                 className="nav-link"
+                                
                             >
                                 Projects
                             </NavLink>
@@ -87,6 +89,7 @@ const Navigation = () => {
                             <NavLink 
                                 to="/blog"
                                 className="nav-link"
+                                
                             >
                                 Blog
                             </NavLink>
@@ -95,6 +98,7 @@ const Navigation = () => {
                             <NavLink 
                                 to="/contact"
                                 className="nav-link"
+                                
                             >
                                 Contact
                             </NavLink>

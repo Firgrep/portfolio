@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Suspense} from 'react';
 import Navigation from '../navigation';
 import { Outlet, ScrollRestoration } from 'react-router-dom';
 import Footer from '../footer';
@@ -7,7 +7,9 @@ const Root = () => {
     return (
         <>
             <Navigation />
-            <Outlet />
+            <Suspense>
+                <Outlet />
+            </Suspense>
             <ScrollRestoration />
             <Footer />
         </>

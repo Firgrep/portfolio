@@ -1,17 +1,20 @@
+import React, { lazy } from 'react';
 import { 
   RouterProvider,
   createHashRouter,
   createRoutesFromElements,
-  Route 
+  Route
 } from 'react-router-dom';
 import Root from './components/root';
 import Home from './pages/home';
-import ProjectsPage from './pages/projectsPage';
-import ProjectDetailsPage from './pages/projectDetailsPage';
-import PrivacyPolicyPage from './pages/privacyPolicyPage';
-import ContactPage from './pages/contactPage';
-import BlogPage from './pages/blogPage';
-import BlogPostPage from './pages/blogPostPage';
+
+// const Home = lazy(() => import('./pages/home'));
+const ProjectsPage = lazy(() => import('./pages/projectsPage'));
+const ProjectDetailsPage = lazy(() => import ('./pages/projectDetailsPage'));
+const PrivacyPolicyPage = lazy(() => import('./pages/privacyPolicyPage'));
+const ContactPage = lazy(() => import('./pages/contactPage'));
+const BlogPage = lazy(() => import('./pages/blogPage'));
+const BlogPostPage = lazy(() => import('./pages/blogPostPage'));
 
 const appRouter = createHashRouter(createRoutesFromElements(
   <Route path="/" element={ <Root /> }>
@@ -21,7 +24,7 @@ const appRouter = createHashRouter(createRoutesFromElements(
     <Route path="privacy-policy" element={ <PrivacyPolicyPage /> }> </Route>
     <Route path="/contact" element={ <ContactPage /> }></Route>
     <Route path="/blog" element={ <BlogPage /> }></Route>
-    <Route path="/blog/:id/:timestamp/:blogpost" element={ <BlogPostPage /> }></Route>
+    <Route path="/blog/:id/:timestamp/:blogpost" element={ <BlogPostPage /> }></Route>  
   </Route>
 ));
 

@@ -41,7 +41,7 @@ const Hero = ({ image, displayText, type }) => {
                         <h1>Hi! I'm Filip,<br></br>I'm a software developer</h1>
                     </div>
                     <div data-aos="fade-left" data-aos-delay="1400" className="avatar-container" style={{position: `${displayText ? "" : "absolute"}`}}>
-                        <img className="img-fluid avatar" src="avatar.jpg" alt=""></img>
+                        <img className="img-fluid avatar" src="avatar.webp" alt=""></img>
                     </div>
                     <div data-aos="fade-up" data-aos-delay="1800" className="card" style={{position: `${displayText ? "" : "absolute"}`}}>
                         <div className="card-body">
