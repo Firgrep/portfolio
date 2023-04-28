@@ -9,10 +9,11 @@ import {
   PURGE,
   REGISTER } from 'redux-persist';
 import sessionStorage from 'redux-persist/lib/storage/session';
-import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2'
+import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
 import projectsReducer from '../features/projects/projectsSlice';
 import blogReducer from '../features/blog/blogSlice';
 import blogPostsReducer from '../features/blogPost/blogPostSlice';
+import miscReducer from '../features/misc/miscSlice.js';
 
 const persistConfig = {
   key: 'root',
@@ -23,7 +24,8 @@ const persistConfig = {
 const persistedReducer = persistReducer(persistConfig, combineReducers({
   projects: projectsReducer,
   blog: blogReducer,
-  blogPosts: blogPostsReducer
+  blogPosts: blogPostsReducer,
+  misc: miscReducer
 }));
 
 export const store = configureStore({

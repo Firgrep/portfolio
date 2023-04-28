@@ -6,6 +6,8 @@ import { Icons } from '../../features/icons/Icons';
 import { Link } from 'react-router-dom';
 import { Button } from "@mui/material";
 import ReadMoreIcon from '@mui/icons-material/ReadMore';
+import { SiteWarning } from '../../features/siteWarning/SiteWarning';
+import ErrorBoundary from '../../app/ErroBoundary';
 
 
 const Home = () => {
@@ -44,6 +46,9 @@ const Home = () => {
         <>
             <Hero />
             <main className="container">
+                <ErrorBoundary>
+                    <SiteWarning />
+                </ErrorBoundary>
                 <section>
                     <div style={{
                         marginBottom: "100px", 

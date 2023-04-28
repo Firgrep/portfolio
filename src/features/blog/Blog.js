@@ -99,7 +99,7 @@ export const Blog = () => {
         )
     }
 
-    if (blog === undefined) {
+    if (Object.keys(blog)?.length === 0) {
         return(
             <h2 style={{textAlign: "center"}}>No blog found. Data is <i>undefined</i>, error likely at API. Check console log for more info.</h2>
         )

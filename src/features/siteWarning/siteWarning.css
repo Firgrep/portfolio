@@ -1,0 +1,7 @@
+.site-warning-background {
+    background-color: rgba(208, 156, 23, 0.5);
+    border-radius: 25px;
+    margin: 2rem;
+    padding: 1rem;
+    border: 2px dotted red;
+}
