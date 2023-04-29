@@ -38,7 +38,8 @@ const Hero = ({ image, displayText, type }) => {
                 &&
                 <>  
                     <div data-aos="fade-down-left" data-aos-delay="1000" className="greetings" style={{position: `${displayText ? "" : "absolute"}`}}>
-                        <h1>Hi! I'm Filip,</h1><h2><b>I'm a philosophy teacher turned software developer</b></h2>
+                        <h1>Hi! I'm Filip,</h1>
+                        <h2 style={{maxWidth: "400px"}}><b>I'm a philosophy teacher turned software developer</b></h2>
                     </div>
                     <div data-aos="fade-left" data-aos-delay="1400" className="avatar-container" style={{position: `${displayText ? "" : "absolute"}`}}>
                         <img className="img-fluid avatar" src="avatar.webp" alt=""></img>

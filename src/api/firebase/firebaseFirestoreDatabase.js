@@ -1,7 +1,11 @@
 import { firestore } from './firebase.js';
 import { collection, getDocs, doc, getDoc } from "firebase/firestore"; 
 
-
+/**
+ * ASYNC | Fetches Blog data from the Firestore Database. The timestamp value of each nested object
+ * is converted to ISO string to avoid non-serializable values in the Redux state. 
+ * @returns A Promise object. Upon fulfilled, a data object that contains nested blog-item objects.
+ */
 export const getFirestoreBlog = async () => {
     try {
         const data = {}
@@ -30,6 +34,13 @@ export const getFirestoreBlog = async () => {
     }
 };
 
+/**
+ * ASYNC | Fetches Blog Post data from the Firestore Database based on given ID. 
+ * The post body is retrieved as base64 string and is first decoded into 
+ * semantic string before passed to the Redux state. 
+ * @param {string} id - unique blog post object ID.
+ * @returns A Promise object. Upon fulfilled, a data object that contains body (string) and id (string).
+ */
 export const getFirestoreBlogPost = async (id) => {
     try {
         const blogPostRef = doc(firestore, "blog-posts", `${id}`);

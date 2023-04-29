@@ -5,6 +5,10 @@ import { ref, get } from "firebase/database";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
+/**
+ * ASYNC | Fetches Project data from Firebase Realtime Database. 
+ * @returns A Promise object. Upon fulfilled, a data array that contains objects per project.
+ */
 export const getFirebaseProjects = async () => {
     try {
         const dbRef = ref(db, 'projects');
@@ -20,6 +24,10 @@ export const getFirebaseProjects = async () => {
     } 
 };
 
+/**
+ * ASYNC | Fetches Misc data from Firebase Realtime Database.
+ * @returns A Promise object. Upon fulfilled, a data object that contains misc objects.
+ */
 export const getFirebaseMisc = async () => {
     try {
         const dbRef = ref(db, 'misc');

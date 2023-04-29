@@ -1,3 +1,9 @@
+/**
+ * Formats a string in simplified extended ISO format, zero UTC offset, and returns
+ * a string local to GB in the form of "DD Month YYYY".
+ * @param {string} dateString - Expects a string in simplified extended ISO format.
+ * @returns 
+ */
 export const formatDateString = (dateString) => {
     const date = new Date(dateString);
 
@@ -12,6 +18,12 @@ export const formatDateString = (dateString) => {
     return date.toLocaleDateString('en-GB', options);
 }
 
+/**
+ * Formats a string in simplified extended ISO format, zero UTC offset, and returns
+ * a string in the form "YYYY-MM".
+ * @param {string} dateString - Expects a string in simplified extended ISO format.
+ * @returns 
+ */
 export const formatDateStringYearMonth = (dateString) => {
     const date = new Date(dateString);
 
@@ -21,6 +33,13 @@ export const formatDateStringYearMonth = (dateString) => {
     return `${year}-${month}`;
 }
 
+/**
+ * Formats tags by either capitalizing them, or turning all-caps, 
+ * or capitalized camelCase (if supported). If not supported, returns
+ * tag as is.
+ * @param {string} tag - Language or tech tool name
+ * @returns 
+ */
 export const formatTag = (tag) => {
     const supportedTagsSimple = ["react", "redux", "python", "django", "firebase"]
 
