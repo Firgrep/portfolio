@@ -17,6 +17,13 @@ export const Blog = () => {
     const [ tagsObjSelected, setTagsObjSelected ] = useState({});
     const [ selectedTagsArr, setSelectedTagsArr ] = useState([]);
 
+    /**
+     * Sets the state of selectedTagsArr array by the received argument object,
+     * which is expected to contain key-value pairs of tag-bool for each tag.
+     * Each tag property is filtered for true, and sets the state by populating it
+     * with only an array of the tags as strings.
+     * @param {object} tagObj Expects an object mapped with tags and bool.
+     */
     const controlSelectedTags = (tagObj) => {
         setSelectedTagsArr(() => {
             const preSelection = Object.entries(tagObj).filter(([key, value]) => value === true);
@@ -25,6 +32,10 @@ export const Blog = () => {
         })
     }
 
+    /**
+     * Sets the state of tagsObjCount by counting based on the argument tag.
+     * @param {string} tag 
+     */
     const populateTagsCount = (tag) => {// setTagObjCount expects an object assignment, not a number, so the whole thing needs to be copied over.
         const tagLower = tag.toLowerCase();
 
@@ -37,6 +48,12 @@ export const Blog = () => {
         });
     }
 
+    /**
+     * Sets the tagsObjSelected state based on whether incoming tag is not in the previous tagObjSelected,
+     * in which case it is set to false; otherwise the previous tagObjSelected is returned as is.
+     * The idea with this function is just to populate a map of unique tag names to bool values.
+     * @param {string} tag 
+     */
     const populateTagsSelection = (tag) => {
         const tagLower = tag.toLowerCase();
 
@@ -61,6 +78,16 @@ export const Blog = () => {
         const filteredEntriesArray = arrayOfEntries.filter(([key, value]) => {return controlArr.some(tag => value.tags.includes(tag))});
         return filteredEntriesArray;
     };
+
+    /**
+     * Callback function for .sort() to compare date properties.
+     * @param {string} a - expects ISO string of time
+     * @param {string} b - expects ISO string of time
+     * @returns 
+     */
+    const compareDates = (dateA, dateB) => {
+        return new Date(dateB) - new Date(dateA);
+    }
 
     useEffect(() => {
         if (!loaded) {
@@ -121,15 +148,19 @@ export const Blog = () => {
                 
                 ?
             
-                Object.entries(blog).map(([id, content]) => (
-                    <BlogItem key={id} content={content} />
-                ))
+                Object.entries(blog)
+                    .sort(([idA, contentA], [idB, contentB]) => compareDates(contentA.date, contentB.date))
+                    .map(([id, content]) => (
+                        <BlogItem key={id} content={content} />
+                    ))
 
                 :
 
-                filterForSelectedTags(blog, selectedTagsArr).map(([id, content]) => (
-                    <BlogItem key={id} content={content} />
-                ))}
+                filterForSelectedTags(blog, selectedTagsArr)
+                    .sort(([idA, contentA], [idB, contentB]) => compareDates(contentA.date, contentB.date))
+                    .map(([id, content]) => (
+                        <BlogItem key={id} content={content} />
+                    ))}
             </div>
         </section>
     );

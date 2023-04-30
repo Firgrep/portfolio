@@ -56,9 +56,9 @@ const AboutPage = () => {
                     </p>
                     {!loading && !error &&
                     <p style={{fontSize: "1.25rem"}}>
-                    <i>In other news: </i>{misc.currentNews}
+                    In other news: {misc.currentNews}
                     </p>}
-                    <h3>Want To Get in Touch? 👋 Ideas To Share or Projects to Build? 🏗️ <NavLink style={{color: "inherit"}} to="/contact">Just drop me a line!</NavLink></h3>
+                    <h3>Want To Get in Touch? 👋 Ideas To Share or Projects to Build? <NavLink style={{color: "inherit"}} to="/contact">Just drop me a line!</NavLink></h3>
                 </div>
                 
             </main>

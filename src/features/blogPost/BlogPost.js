@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { loadBlogPost } from './blogPostSlice';
 import { useParams } from 'react-router-dom';
 import { selectBlogPostsLoading, selectBlogPostsError, selectBlogPostBodyById } from './blogPostSlice';
 import { BlogPostHeader } from './blogPostHeader';
 import { marked } from 'marked';
 import DOMPurify from 'dompurify';
+import { Button } from '@mui/material';
 import './blogPost.css';
 
 
 export const BlogPost = ({setHeroText}) => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const { id } = useParams();
     const loading = useSelector(selectBlogPostsLoading);
     const error = useSelector(selectBlogPostsError);
@@ -86,6 +89,16 @@ export const BlogPost = ({setHeroText}) => {
                 <section className="blog-post-contents" dangerouslySetInnerHTML={{__html: postBodyClean}}></section>
             }
             </article>
+            <div className="center-content" style={{marginBottom: "100px"}}>
+                <Button 
+                    onClick={()=> navigate(-1)}
+                    size="large"
+                    variant="contained"
+                    color="primary"
+                >
+                    Back
+                </Button>
+            </div>
         </>
     );
 };
