@@ -10,3 +10,6 @@ Implement a transition function that prevents React from rendering the suspense 
 -   https://gist.github.com/perlow/bb7612b25f37667be964f1a1aba42780
 -   https://react.dev/reference/react/useTransition
 -   https://react.dev/reference/react/Suspense#preventing-unwanted-fallbacks
+
+### Blog filter selection is not saved between pages
+If one selects a tag, has the relevant list show up, click to read a blog post and then hit back, one will discover that the previously selected tag (or tags) have been reset. Will need to think of ways to store between pages, either by a particular hook or using Redux. 

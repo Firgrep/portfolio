@@ -20,7 +20,7 @@ const Home = () => {
 
     const languages = ["javascript", "python", "cplusplus", "css", "html"]
     const tools = ["react", "redux", "django", "git", "matplotlib", "bootstrap", "numpy",
-                    "pandas", "jspdf", "chartjs", "nodejs", "materialui", "firebase"]
+                    "pandas", "jspdf", "chartjs", "nodejs", "materialui", "firebase", "cypress"]
 
     useEffect(() => {
         const handleLargeScreen = e => setLargeScreen(e.matches);
