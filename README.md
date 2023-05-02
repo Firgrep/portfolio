@@ -6,10 +6,13 @@
 - [Aesthetics](#aesthetics)
 - [Performance](#performance)
 - [Testing](#testing)
+- [Accessibility](#accessibility)
 - [Security](#security)
 - [Resources](#resources)
 
 # Overview
+
+[🌟🔗 Live Link](https//www.filipniklas.com) *when ready
 
 This is a personalized Portfolio showcase and blog website that automatically updates contents and UI based on data fetched from from external database service. 
 
@@ -47,6 +50,8 @@ The `Marked` library has been used to handle the blog data, which was written in
 
 `Firebase` is used as a BaaS provider, and specifically the Realtime Database and Firestore Database have been employed. Portfolio retrieves the data through thunk functions of the respective Redux "slice" and maintains it in its store (along with persistence in sessionStorage). Writes and updates to the databases are done through a different set of scripts.
 
+A special "misc" dataset is used for news and maintenance items. For example, should there be an error on the site and one wants to inform the user as quickly as possible, the maintenance field can be updated in the database with a specific maintenance message and the app will render this on its homepage. 
+
 `@emailjs` is used as the email service for the contact form. 
 
 # Aesthetics
@@ -76,15 +81,32 @@ Media have been scaled down and reformatted to lower-cost formats to save load s
 
 Otherwise, manual testing has been employed throughout, with careful step-by-step implementation of new code or feature and then immediately test the UI (whenever possible) to see that old functionality, and new, were working as expected. 
 
+# Accessibility
+Semantic HTML tags have been used wherever it made sense as well as aria-labels for inputs. Most, if not all, of the library components used already come packaged with aria descriptions. 
+
+The UI has been manually tested for responsiveness to work adequately for smaller and tablet-sized screens, as well as very large screens. 
+
 # Security
 `DOMPurify` is used to sanitize the blog post data for malicious XXS.
 
-Firebase's `App Check` and `reCAPTCHA v3` are employed to monitor and enforce that the data retrieved from the database is by the correct app. 
+Firebase's `App Check` and `reCAPTCHA v3` are employed to monitor and enforce that the data retrieved from the database is by the correct app. Otherwise, Firebase's database rules for read and write of data have been configured appropriately. 
 
 # Resources
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+To learn more about the tools and technologies used in this app, please visit the relevant documentation. They are usually really great, clearly written with helpful examples.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+* [React documentation](https://reactjs.org/)
+* [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started)
+* [React Router documentation](https://reactrouter.com/en/main)
+* [Redux documentation](https://redux.js.org/)
+* [Firebase documentation](https://firebase.google.com/docs)
+* [Firebase API reference](https://firebase.google.com/docs/reference)
+* [Cypress documentation](https://docs.cypress.io/guides/overview/why-cypress)
+* [React Testing Library documentation](https://testing-library.com/docs/react-testing-library/intro/)
+* [Bootstrap](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
+* [MaterialUI](https://mui.com/material-ui/getting-started/overview/)
+* [Mock Service Worker](https://mswjs.io/docs/)
+* [Marked](https://marked.js.org/)
+* [DOMPurify](https://github.com/cure53/DOMPurify)
 
 -----------------
 **From the initial React Readme:**
