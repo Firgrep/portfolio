@@ -52,7 +52,7 @@ const AboutPage = () => {
                     💡 Philosophy continues to be a significant part of my life. Seasonally, I teach philosophy courses at the <Link style={{color: "inherit"}} to="https://www.halkyonguild.org/academy" target="_blank">Halkyon Academy</Link>, which provides a spirited intellectual forum and mental gym at the convenience of one's home without the loss of rigor and quality. I also tutor privately for those who are philosophically intrepid and would like to tunnel deeper into a particular text. 
                     </p>
                     <p style={{fontSize: "1.25rem"}}>
-                    🖎 Poetry is another meaningful enterprise for me. In 2022, I published <i>Saedah: a poem of change</i>, an epic poem of 401 verses arrayed in five parts, which can be found <Link style={{color: "inherit"}} to="https://www.amazon.com/Saedah-poem-change-Filip-Niklas/dp/B0B7QGTN9R" target="_blank">here</Link>. 
+                    ✒️ Poetry is another meaningful enterprise for me. In 2022, I published <i>Saedah: a poem of change</i>, an epic poem of 401 verses arrayed in five parts, which can be found <Link style={{color: "inherit"}} to="https://www.amazon.com/Saedah-poem-change-Filip-Niklas/dp/B0B7QGTN9R" target="_blank">here</Link>. 
                     </p>
                     {!loading && !error &&
                     <p style={{fontSize: "1.25rem"}}>

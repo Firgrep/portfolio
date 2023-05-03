@@ -30,7 +30,7 @@ git clone https://github.com/Firgrep/portfolio.git
 
 Note that this .git repository will NOT include, for security reasons, certain API credentials, such that the app will not function properly when run from the clone as is, as this repository is inteded for public inspection of code rather than providing utility (but please feel free to use anything you find). If you want to add your own credentials and backend service, create a .js file in the `/src/api/firebase/` folder that contains a config file and initializes the connection. For emails, go to `/compontents/contactForm/emailCred/` and add a .js file with the requisite config for an email provider. (A blog post or two about how to set these up may come in the future.)
 
-In the project directory, you can start a local server by inputting into your terminal.
+In the project directory, you can start a local server by putting into your terminal.
 ```
 npm start
 ```
@@ -91,7 +91,7 @@ The UI has been manually tested for responsiveness to work adequately for smalle
 # Security
 `DOMPurify` is used to sanitize the blog post data for malicious XXS.
 
-Firebase's `App Check` and `reCAPTCHA v3` are employed to monitor and enforce that the data retrieved from the database is by the correct app. Otherwise, Firebase's database rules for read and write of data have been configured appropriately. 
+Firebase's database rules for read and write of data have been configured. 
 
 # Resources
 To learn more about the tools and technologies used in this app, please visit the relevant documentation. They are usually really great, clearly written with helpful examples.
@@ -109,31 +109,3 @@ To learn more about the tools and technologies used in this app, please visit th
 * [Mock Service Worker](https://mswjs.io/docs/)
 * [Marked](https://marked.js.org/)
 * [DOMPurify](https://github.com/cure53/DOMPurify)
-
------------------
-**From the initial React Readme:**
-
-`npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-`npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-`npm run eject`
-
-Note: this is a one-way operation. Once you `eject`, you can't go back!
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.

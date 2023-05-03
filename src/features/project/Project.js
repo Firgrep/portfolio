@@ -8,6 +8,7 @@ import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import { marked } from 'marked';
 import DOMPurify from 'dompurify';
 import '../projects/projects.css';
+import './project.css';
 
 export const Project = ({projectId, setText, setImageUrl}) => {
     const dispatch = useDispatch();
@@ -145,16 +146,15 @@ export const Project = ({projectId, setText, setImageUrl}) => {
 
                     </div>
                         { readmeData &&
-                        <div style={{marginTop: "100px"}}>
+                        <div style={{
+                            marginTop: "100px",
+                            display: "flex",
+                            flexDirection: "column",
+                            alignItems: "center"}}>
                             <h1 style={{textAlign: "center"}}>Project Readme</h1>
                             <div 
+                                className="readme-container"
                                 dangerouslySetInnerHTML={{__html: readmeData}}
-                                style={{
-                                    backgroundColor: "white", 
-                                    padding: "15px", 
-                                    borderRadius: "25px",
-                                    boxShadow: "5px 10px 18px #888888"
-                                }}
                             ></div>
                         </div>
                         }

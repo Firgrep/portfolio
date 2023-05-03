@@ -17,6 +17,7 @@
 .env.development.local
 .env.test.local
 .env.production.local
+/notes
 
 # credentials
 src/components/contactForm/emailCred/
