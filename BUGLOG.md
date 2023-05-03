@@ -1,5 +1,6 @@
 ## >> Minor
 - Hovering over the Chip in the Button in the BlogFilterSelection component won't display the usual hand but returns to a normal cursor. 
+- Clicking on table-of-contents links within a project Readme file will crash the page, as marked does not currently generate the links. May need to add hash link router in order to make this work proberly. 
 
 ## >> Better Solution Needed
 ### Flickering loads due to code-splitting

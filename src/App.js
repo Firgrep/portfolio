@@ -18,15 +18,47 @@ const BlogPostPage = lazy(() => import('./pages/blogPostPage'));
 const AboutPage = lazy(() => import('./pages/aboutPage'));
 
 const appRouter = createHashRouter(createRoutesFromElements(
-  <Route path="/" element={ <Root /> }>
-    <Route index element={ <Home /> }></Route>
-    <Route path="/projects" element={ <ProjectsPage /> }></Route>
-    <Route path="/project/:project" element={ <ProjectDetailsPage /> }></Route>
-    <Route path="privacy-policy" element={ <PrivacyPolicyPage /> }> </Route>
-    <Route path="/contact" element={ <ContactPage /> }></Route>
-    <Route path="/blog" element={ <BlogPage /> }></Route>
-    <Route path="/blog/:id/:timestamp/:blogpost" element={ <BlogPostPage /> }></Route>
-    <Route path="/about" element={ <AboutPage /> }></Route>  
+  <Route path="/" element={ <Root /> } errorElement={<ErrorPage />}>
+    <Route 
+      index 
+      element={ <Home /> } 
+      errorElement={<ErrorPage />}
+    />
+    <Route 
+      path="/projects" 
+      element={ <ProjectsPage /> } 
+      errorElement={<ErrorPage />}
+    />
+    <Route 
+      path="/project/:project" 
+      element={ <ProjectDetailsPage /> } 
+      errorElement={<ErrorPage />}
+    />
+    <Route 
+      path="privacy-policy" 
+      element={ <PrivacyPolicyPage /> } 
+      errorElement={<ErrorPage />}
+    />
+    <Route 
+      path="/contact" 
+      element={ <ContactPage /> } 
+      errorElement={<ErrorPage />}
+    />
+    <Route 
+      path="/blog" 
+      element={ <BlogPage /> } 
+      errorElement={<ErrorPage />}
+    />
+    <Route 
+      path="/blog/:id/:timestamp/:blogpost" 
+      element={ <BlogPostPage /> } 
+      errorElement={<ErrorPage />}
+    />
+    <Route 
+      path="/about" 
+      element={ <AboutPage /> } 
+      errorElement={<ErrorPage />}
+    />
   </Route>
 ));
 
@@ -38,3 +70,12 @@ function App() {
 }
 
 export default App;
+
+function ErrorPage() {
+
+  return (
+    <div>
+      <h3>🔗‍💥 Unfortunately, the link you were trying to access does not exist or it is bugged. If the problem persists, please contact the site administrator. I apologize for any inconvenience caused.</h3>
+    </div>
+  )
+}

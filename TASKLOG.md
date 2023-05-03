@@ -2,6 +2,10 @@
 
 * make new blog posts (1 more)
 
-* set up jsDoc (see how this works for react components)
+## Future Tasks
 
-* testimonials page?
+* fix bugs
+* add testimonials page
+* add philosophy page
+* add search feature
+* add filter selection saving between pages

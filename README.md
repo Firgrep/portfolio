@@ -65,6 +65,8 @@ Apart from custom CSS to style the site as needed, various additional tools have
 
 `Highlight.js` has been used to color the code-blocks in the blog posts relevant to programming language. 
 
+`Devicon` has been used to find many of the languages, tools and technology .svg icons. 
+
 `AOS` has been used, sparingly, for fade-in and fade-out animation effects.
 
 # Performance

@@ -41,7 +41,7 @@ export const formatDateStringYearMonth = (dateString) => {
  * @returns 
  */
 export const formatTag = (tag) => {
-    const supportedTagsSimple = ["react", "redux", "python", "django", "firebase"]
+    const supportedTagsSimple = ["react", "redux", "python", "django", "firebase", "general"]
 
     if (tag.toLowerCase() === "javascript") {
         return "JavaScript";
