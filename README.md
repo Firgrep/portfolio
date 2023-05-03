@@ -12,7 +12,7 @@
 
 # Overview
 
-[🌟🔗 Live Link](https//www.filipniklas.com) *when ready
+[🌟🔗 Live Link](https://www.filipniklas.com/)
 
 This is a personalized Portfolio showcase and blog website that automatically updates contents and UI based on data fetched from from external database service. 
 
