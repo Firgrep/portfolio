@@ -8,6 +8,8 @@ import { Button } from "@mui/material";
 import ReadMoreIcon from '@mui/icons-material/ReadMore';
 import { SiteWarning } from '../../features/siteWarning/SiteWarning';
 import ErrorBoundary from '../../app/ErroBoundary';
+import { AnimationBox } from '../../components/animation/AnimationBox';
+import WebGL from 'three/addons/capabilities/WebGL.js';
 
 
 const Home = () => {
@@ -18,7 +20,7 @@ const Home = () => {
         window.matchMedia("(min-width: 1200px)").matches
     );
 
-    const languages = ["javascript", "python", "cplusplus", "css", "html"]
+    const languages = ["typescript", "javascript", "python", "cplusplus", "css", "html"]
     const tools = ["react", "redux", "django", "git", "matplotlib", "bootstrap", "numpy",
                     "pandas", "jspdf", "chartjs", "nodejs", "materialui", "firebase", "cypress"]
 
@@ -49,6 +51,16 @@ const Home = () => {
                 <ErrorBoundary>
                     <SiteWarning />
                 </ErrorBoundary>
+                {(
+                    WebGL.isWebGLAvailable()
+                ) ? ( 
+                    <div style={{display: "flex", flexWrap: "wrap"}}>
+                        <AnimationBox id="1" />
+                        <AnimationBox id="2" />
+                    </div>
+                ) : (
+                    <p>No WebGL available</p>
+                )}
                 <section>
                     <div style={{
                         marginBottom: "100px", 
@@ -57,7 +69,9 @@ const Home = () => {
                         <div style={{marginBottom: "60px"}}>
                             <h1>Languages I Speak</h1>
                         <div style={{display: "flex"}}>
-                            <Icons dataArray={languages}></Icons>
+                            <div style={{maxWidth: "350px"}}>
+                                <Icons dataArray={languages}></Icons>
+                            </div>
                             {largeScreen &&
                             <div style={{
                                 display: "flex", 
@@ -78,7 +92,9 @@ const Home = () => {
                             >
                                 <img src="toolbox.svg" height="200" width="200" style={{opacity: "0.3"}} alt=""/>
                             </div>}
-                            <Icons dataArray={tools}></Icons>
+                            <div style={{maxWidth: "525px"}}>
+                                <Icons dataArray={tools}></Icons>
+                            </div>
                         </div>
                     </div>
                 </section>

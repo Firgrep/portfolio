@@ -2,12 +2,23 @@ import React from "react";
 import Firebase from '../../assets/firebase.svg';
 import Nodejs from '../../assets/nodejs.svg';
 import Cypress from '../../assets/cypress.svg';
+import Docker from '../../assets/docker.svg';
+import Googlecloud from '../../assets/googlecloud.svg';
+import Nextjs from '../../assets/next.svg';
+import Nextauth from '../../assets/nextauth.svg';
+import Prisma from '../../assets/prisma.svg';
+import Trpc from '../../assets/trpc.svg';
+import Typescript from '../../assets/typescript.svg';
+import Zod from '../../assets/zod.svg';
 import './icon.css';
 
 export const Icon = ({icon, size}) => {
-    const supportedIcons = ["redux", "react", "javascript", "python", "django", "matplotlib", "html", "css",
-                            "jspdf", "bootstrap", "cplusplus", "pandas", "git", "numpy", "github", "linkedin",
-                            "chartjs", "materialui", "firebase", "nodejs", "cypress"];
+    const supportedIcons = ["redux", "react", "javascript", "python", "django", 
+                            "matplotlib", "html", "css", "jspdf", "bootstrap", 
+                            "cplusplus", "pandas", "git", "numpy", "github", "linkedin",
+                            "chartjs", "materialui", "firebase", "nodejs", "cypress",
+                            "docker", "googlecloud", "nextjs", "nextauth", "prisma",
+                            "trpc", "typescript", "zod"];
     const viewBox = "0 0 128 128";
     const fontWeight = "bold";
     const limitSize = "60px";
@@ -329,6 +340,102 @@ export const Icon = ({icon, size}) => {
                         getSize(size) === limitSize
                         && 
                         <h5 style={{color: "#2AB586", fontWeight: fontWeight}}>Cypress</h5>
+                    }
+                </>
+            }
+            {
+                icon.toLowerCase() === "docker"
+                &&
+                <>
+                    <img src={Docker} style={{height: getSize(size), width: getSize(size)}} alt=""></img>
+                    {
+                        getSize(size) === limitSize
+                        && 
+                        <h5 style={{color: "#066da5", fontWeight: fontWeight}}>Docker</h5>
+                    }
+                </>
+            }
+            {
+                icon.toLowerCase() === "googlecloud"
+                &&
+                <>
+                    <img src={Googlecloud} style={{height: getSize(size), width: getSize(size)}} alt=""></img>
+                    {
+                        getSize(size) === limitSize
+                        && 
+                        <h5 style={{color: "#6b7280", fontWeight: fontWeight}}>Google Cloud</h5>
+                    }
+                </>
+            }
+            {
+                icon.toLowerCase() === "nextjs"
+                &&
+                <>
+                    <img src={Nextjs} style={{height: getSize(size), width: getSize(size)}} alt=""></img>
+                    {
+                        getSize(size) === limitSize
+                        && 
+                        <h5 style={{color: "#020617", fontWeight: fontWeight}}>Next.js</h5>
+                    }
+                </>
+            }
+            {
+                icon.toLowerCase() === "nextauth"
+                &&
+                <>
+                    <img src={Nextauth} style={{height: getSize(size), width: getSize(size)}} alt=""></img>
+                    {
+                        getSize(size) === limitSize
+                        && 
+                        <h5 style={{color: "#020617", fontWeight: fontWeight}}>NextAuth</h5>
+                    }
+                </>
+            }
+            {
+                icon.toLowerCase() === "prisma"
+                &&
+                <>
+                    <img src={Prisma} style={{height: getSize(size), width: getSize(size)}} alt=""></img>
+                    {
+                        getSize(size) === limitSize
+                        && 
+                        <h5 style={{color: "#020617", fontWeight: fontWeight}}>Prisma</h5>
+                    }
+                </>
+            }
+            {
+                icon.toLowerCase() === "trpc"
+                &&
+                <>
+                    <img src={Trpc} style={{height: getSize(size), width: getSize(size)}} alt=""></img>
+                    {
+                        getSize(size) === limitSize
+                        && 
+                        <h5 style={{color: "#398CCB", fontWeight: fontWeight}}>tRPC</h5>
+                    }
+                </>
+            }
+            {
+                icon.toLowerCase() === "typescript"
+                &&
+                <>
+                    <img src={Typescript} style={{height: getSize(size), width: getSize(size)}} alt=""></img>
+                    {
+                        getSize(size) === limitSize
+                        && 
+                        <h5 style={{color: "#007acc", fontWeight: fontWeight}}>TypeScript</h5>
+                    }
+                </>
+            }
+            {
+                icon.toLowerCase() === "zod"
+                &&
+                <>
+                    <img src={Zod} style={{height: getSize(size), width: getSize(size)}} alt=""></img>
+                    {
+                        getSize(size) === limitSize
+                        && 
+                        <h5 style={{color: "#18253F", fontWeight: fontWeight}}>Zod</h5>
                     }
                 </>
             }
