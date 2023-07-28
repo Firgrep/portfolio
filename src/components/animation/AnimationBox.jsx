@@ -1,29 +1,41 @@
 import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import Stats from 'three/examples/jsm/libs/stats.module';
 
-import Firebase from '../../assets/firebase.svg';
-import Nodejs from '../../assets/nodejs.svg';
-import Cypress from '../../assets/cypress.svg';
-import Docker from '../../assets/docker.svg';
-import Googlecloud from '../../assets/googlecloud.svg';
-import Nextjs from '../../assets/next.svg';
-import Nextauth from '../../assets/nextauth.svg';
-import Prisma from '../../assets/prisma.svg';
-import Trpc from '../../assets/trpc.svg';
-import Typescript from '../../assets/typescript.svg';
-import Zod from '../../assets/zod.svg';
 
-export const AnimationBox = ({id}) => {
+/**
+ * Animated box that accepts up to six different textures.
+ * @param {*} props | id: string, textures: object, rotation: object
+ *                  | {textures}: up to 6 paths to media files
+ *                  | {rotation}: x, y, z coordinates in type number
+ * @returns 
+ */
+export const AnimationBox = ({
+    id,
+    textures: {
+        texture1,
+        texture2,
+        texture3,
+        texture4,
+        texture5,
+        texture6,
+    },
+    rotation = {
+        x: 0.01,
+        y: 0.01,
+        z: 0.005,
+    }
+}) => {
     const effectCalled = useRef(false);
-    const INT_SIZE = 350;
+    const INT_SIZE = 250;
     const STR_HEIGHT = `${INT_SIZE}px`
     const STR_WIDTH = `${INT_SIZE}px`
+    const INT_X_ROTATION = rotation.x;
+    const INT_Y_ROTATION = rotation.y;
+    const INT_Z_ROTATION = rotation.z;
     
     useEffect(() => {
         if (effectCalled.current) return; // guard to prevent double-effect call during development
-        console.log("effect fires");
 
         // Get DOM elements
         const canvas = document.getElementById(`animationCanvas-${id}`);
@@ -61,40 +73,39 @@ export const AnimationBox = ({id}) => {
         scene.add(spotLight);
 
         // Textures
-        const firebaseTexture = new THREE.TextureLoader().load(Firebase);
-        const dockerTexture = new THREE.TextureLoader().load(Docker);
-        const nextTexture = new THREE.TextureLoader().load(Nextjs);
-        const nodejsTexture = new THREE.TextureLoader().load(Nodejs);
-        const googlecloudTexture = new THREE.TextureLoader().load(Googlecloud);
-        const nextauthTexture = new THREE.TextureLoader().load(Nextauth);
-        const cypressTexture = new THREE.TextureLoader().load(Cypress);
+        const firstTextureLoaded = new THREE.TextureLoader().load(texture1);
+        const secondTextureLoaded = new THREE.TextureLoader().load(texture2);
+        const thirdTextureLoaded = new THREE.TextureLoader().load(texture3);
+        const fourthTextureLoaded = new THREE.TextureLoader().load(texture4);
+        const fifthTextureLoaded = new THREE.TextureLoader().load(texture5);
+        const sixthTextureLoaded = new THREE.TextureLoader().load(texture6);
 
         // Add object element
         const geometry = new THREE.BoxGeometry(3, 3, 3);
         const materials = [
            new THREE.MeshStandardMaterial({ 
                 // color: 0xFF6347,
-                map: firebaseTexture,
+                map: firstTextureLoaded,
                 transparent: true,
             }),
             new THREE.MeshStandardMaterial({ 
-                map: dockerTexture,
+                map: secondTextureLoaded,
                 transparent: true,
             }),
             new THREE.MeshStandardMaterial({ 
-                map: nextTexture,
+                map: thirdTextureLoaded,
                 transparent: true,
             }),
             new THREE.MeshStandardMaterial({ 
-                map: nodejsTexture,
+                map: fourthTextureLoaded,
                 transparent: true,
             }),
             new THREE.MeshStandardMaterial({ 
-                map: googlecloudTexture,
+                map: fifthTextureLoaded,
                 transparent: true,
             }),
             new THREE.MeshStandardMaterial({ 
-                map: nextauthTexture,
+                map: sixthTextureLoaded,
                 transparent: true,
             }),
         ];
@@ -105,21 +116,28 @@ export const AnimationBox = ({id}) => {
         // Add orbit controls
         const controls = new OrbitControls(camera, renderer.domElement);
 
-        // Add FPS stats
-        const stats = Stats();
-        container.appendChild(stats.dom);
-
         const animate = () => {
             requestAnimationFrame(animate);
             renderer.render(scene, camera);
-            cube.rotation.x += 0.01;
-            cube.rotation.y += 0.01;
+            cube.rotation.x += INT_X_ROTATION;
+            cube.rotation.y += INT_Y_ROTATION;
+            cube.rotation.z += INT_Z_ROTATION;
             controls.update();
-            stats.update();
         };
         animate();
         effectCalled.current = true;
-    }, [])
+    }, [
+        INT_X_ROTATION,
+        INT_Y_ROTATION,
+        INT_Z_ROTATION,
+        texture1,
+        texture2,
+        texture3,
+        texture4,
+        texture5,
+        texture6,
+        id,
+    ])
   
       return (
         <div style={{height: STR_HEIGHT, width: STR_WIDTH}} id={`animationContainer-${id}`}>
